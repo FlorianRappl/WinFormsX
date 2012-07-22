@@ -1,17 +1,19 @@
 Windows Forms Extensions
 ============================================================
 
-Redcarpet is Ruby library for Markdown processing that smells like
-butterflies and popcorn.
+The Windows Forms Extensions library has been created to provide elegant and
+useful features, which are available in Web technologies or XAML (WPF, ...)
+to the Windows Forms technology.
 
-Redcarpet used to be a drop-in replacement for Redcloth. This is no longer the
-case since version 2 -- it now has its own API, but retains the old name. Yes,
-that does mean that Redcarpet 2 is not backwards-compatible with the 1.X
-versions.
+The list of implemented helpers contains methods such as `Animate()`, which
+have been implemented using higher possibilities of the C# programming
+language (like extension methods or anonymous objects). Included methods
+are not limited to the Windows Forms technology (such as extending classes
+like `Form` or `Control`), but can also extend the possibilites of the
+.NET-Framework.
 
-Redcarpet is powered by the [Sundown](https://www.github.com/tanoku/sundown)
-library. You might want to find out more about Sundown to see what makes this
-Ruby library so awesome.
+If you are willing to contribute to this project (either with new ideas or
+existing codes), you are more than welcome.
 
 Current status
 -------------------------------------------------------
