@@ -1,0 +1,577 @@
+﻿<html xmlns:MSHelp="http://msdn.microsoft.com/mshelp" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <head>
+    <link rel="SHORTCUT ICON" href="./../branding/favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="./../branding/branding-en-US.css" />
+    <style type="text/css">.OH_CodeSnippetContainerTabLeftActive, .OH_CodeSnippetContainerTabLeft,.OH_CodeSnippetContainerTabLeftDisabled {background-image: url('./../branding/tabLeftBG.gif')}.OH_CodeSnippetContainerTabRightActive, .OH_CodeSnippetContainerTabRight,.OH_CodeSnippetContainerTabRightDisabled {background-image: url('./../branding/tabRightBG.gif')}.OH_footer { background-image: url('./../branding/footer_slice.gif'); background-position:top; background-repeat:repeat-x}</style>
+    <style type="text/css">
+			body
+			{
+			border-left:5px solid #e6e6e6;
+			overflow-x:scroll;
+			overflow-y:scroll;
+			}
+		</style>
+    <script src="./../branding/branding.js" type="text/javascript">
+      <!---->
+    </script>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>SYSTEM_INFORMATION_CLASS Enumeration</title>
+    <meta name="Language" content="en-us" />
+    <meta name="System.Keywords" content="SYSTEM_INFORMATION_CLASS enumeration" />
+    <meta name="System.Keywords" content="System.Windows.API.SYSTEM_INFORMATION_CLASS enumeration" />
+    <meta name="System.Keywords" content="SystemInformationClassMin enumeration member" />
+    <meta name="System.Keywords" content="SystemBasicInformation enumeration member" />
+    <meta name="System.Keywords" content="SystemProcessorInformation enumeration member" />
+    <meta name="System.Keywords" content="SystemPerformanceInformation enumeration member" />
+    <meta name="System.Keywords" content="SystemTimeOfDayInformation enumeration member" />
+    <meta name="System.Keywords" content="SystemPathInformation enumeration member" />
+    <meta name="System.Keywords" content="SystemNotImplemented1 enumeration member" />
+    <meta name="System.Keywords" content="SystemProcessInformation enumeration member" />
+    <meta name="System.Keywords" content="SystemProcessesAndThreadsInformation enumeration member" />
+    <meta name="System.Keywords" content="SystemCallCountInfoInformation enumeration member" />
+    <meta name="System.Keywords" content="SystemCallCounts enumeration member" />
+    <meta name="System.Keywords" content="SystemDeviceInformation enumeration member" />
+    <meta name="System.Keywords" content="SystemConfigurationInformation enumeration member" />
+    <meta name="System.Keywords" content="SystemProcessorPerformanceInformation enumeration member" />
+    <meta name="System.Keywords" content="SystemProcessorTimes enumeration member" />
+    <meta name="System.Keywords" content="SystemFlagsInformation enumeration member" />
+    <meta name="System.Keywords" content="SystemGlobalFlag enumeration member" />
+    <meta name="System.Keywords" content="SystemCallTimeInformation enumeration member" />
+    <meta name="System.Keywords" content="SystemNotImplemented2 enumeration member" />
+    <meta name="System.Keywords" content="SystemModuleInformation enumeration member" />
+    <meta name="System.Keywords" content="SystemLocksInformation enumeration member" />
+    <meta name="System.Keywords" content="SystemLockInformation enumeration member" />
+    <meta name="System.Keywords" content="SystemStackTraceInformation enumeration member" />
+    <meta name="System.Keywords" content="SystemNotImplemented3 enumeration member" />
+    <meta name="System.Keywords" content="SystemPagedPoolInformation enumeration member" />
+    <meta name="System.Keywords" content="SystemNotImplemented4 enumeration member" />
+    <meta name="System.Keywords" content="SystemNonPagedPoolInformation enumeration member" />
+    <meta name="System.Keywords" content="SystemNotImplemented5 enumeration member" />
+    <meta name="System.Keywords" content="SystemHandleInformation enumeration member" />
+    <meta name="System.Keywords" content="SystemObjectInformation enumeration member" />
+    <meta name="System.Keywords" content="SystemPageFileInformation enumeration member" />
+    <meta name="System.Keywords" content="SystemPagefileInformation enumeration member" />
+    <meta name="System.Keywords" content="SystemVdmInstemulInformation enumeration member" />
+    <meta name="System.Keywords" content="SystemInstructionEmulationCounts enumeration member" />
+    <meta name="System.Keywords" content="SystemVdmBopInformation enumeration member" />
+    <meta name="System.Keywords" content="SystemInvalidInfoClass1 enumeration member" />
+    <meta name="System.Keywords" content="SystemFileCacheInformation enumeration member" />
+    <meta name="System.Keywords" content="SystemCacheInformation enumeration member" />
+    <meta name="System.Keywords" content="SystemPoolTagInformation enumeration member" />
+    <meta name="System.Keywords" content="SystemInterruptInformation enumeration member" />
+    <meta name="System.Keywords" content="SystemProcessorStatistics enumeration member" />
+    <meta name="System.Keywords" content="SystemDpcBehaviourInformation enumeration member" />
+    <meta name="System.Keywords" content="SystemDpcInformation enumeration member" />
+    <meta name="System.Keywords" content="SystemFullMemoryInformation enumeration member" />
+    <meta name="System.Keywords" content="SystemNotImplemented6 enumeration member" />
+    <meta name="System.Keywords" content="SystemLoadImage enumeration member" />
+    <meta name="System.Keywords" content="SystemUnloadImage enumeration member" />
+    <meta name="System.Keywords" content="SystemTimeAdjustmentInformation enumeration member" />
+    <meta name="System.Keywords" content="SystemTimeAdjustment enumeration member" />
+    <meta name="System.Keywords" content="SystemSummaryMemoryInformation enumeration member" />
+    <meta name="System.Keywords" content="SystemNotImplemented7 enumeration member" />
+    <meta name="System.Keywords" content="SystemNextEventIdInformation enumeration member" />
+    <meta name="System.Keywords" content="SystemNotImplemented8 enumeration member" />
+    <meta name="System.Keywords" content="SystemEventIdsInformation enumeration member" />
+    <meta name="System.Keywords" content="SystemNotImplemented9 enumeration member" />
+    <meta name="System.Keywords" content="SystemCrashDumpInformation enumeration member" />
+    <meta name="System.Keywords" content="SystemExceptionInformation enumeration member" />
+    <meta name="System.Keywords" content="SystemCrashDumpStateInformation enumeration member" />
+    <meta name="System.Keywords" content="SystemKernelDebuggerInformation enumeration member" />
+    <meta name="System.Keywords" content="SystemContextSwitchInformation enumeration member" />
+    <meta name="System.Keywords" content="SystemRegistryQuotaInformation enumeration member" />
+    <meta name="System.Keywords" content="SystemLoadAndCallImage enumeration member" />
+    <meta name="System.Keywords" content="SystemPrioritySeparation enumeration member" />
+    <meta name="System.Keywords" content="SystemPlugPlayBusInformation enumeration member" />
+    <meta name="System.Keywords" content="SystemNotImplemented10 enumeration member" />
+    <meta name="System.Keywords" content="SystemDockInformation enumeration member" />
+    <meta name="System.Keywords" content="SystemNotImplemented11 enumeration member" />
+    <meta name="System.Keywords" content="SystemInvalidInfoClass2 enumeration member" />
+    <meta name="System.Keywords" content="SystemProcessorSpeedInformation enumeration member" />
+    <meta name="System.Keywords" content="SystemInvalidInfoClass3 enumeration member" />
+    <meta name="System.Keywords" content="SystemCurrentTimeZoneInformation enumeration member" />
+    <meta name="System.Keywords" content="SystemTimeZoneInformation enumeration member" />
+    <meta name="System.Keywords" content="SystemLookasideInformation enumeration member" />
+    <meta name="System.Keywords" content="SystemSetTimeSlipEvent enumeration member" />
+    <meta name="System.Keywords" content="SystemCreateSession enumeration member" />
+    <meta name="System.Keywords" content="SystemDeleteSession enumeration member" />
+    <meta name="System.Keywords" content="SystemInvalidInfoClass4 enumeration member" />
+    <meta name="System.Keywords" content="SystemRangeStartInformation enumeration member" />
+    <meta name="System.Keywords" content="SystemVerifierInformation enumeration member" />
+    <meta name="System.Keywords" content="SystemAddVerifier enumeration member" />
+    <meta name="System.Keywords" content="SystemSessionProcessesInformation enumeration member" />
+    <meta name="System.Keywords" content="SystemInformationClassMax enumeration member" />
+    <meta name="Microsoft.Help.F1" content="System.Windows.API.SYSTEM_INFORMATION_CLASS" />
+    <meta name="Microsoft.Help.F1" content="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemInformationClassMin" />
+    <meta name="Microsoft.Help.F1" content="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemBasicInformation" />
+    <meta name="Microsoft.Help.F1" content="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemProcessorInformation" />
+    <meta name="Microsoft.Help.F1" content="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemPerformanceInformation" />
+    <meta name="Microsoft.Help.F1" content="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemTimeOfDayInformation" />
+    <meta name="Microsoft.Help.F1" content="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemPathInformation" />
+    <meta name="Microsoft.Help.F1" content="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemNotImplemented1" />
+    <meta name="Microsoft.Help.F1" content="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemProcessInformation" />
+    <meta name="Microsoft.Help.F1" content="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemProcessesAndThreadsInformation" />
+    <meta name="Microsoft.Help.F1" content="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemCallCountInfoInformation" />
+    <meta name="Microsoft.Help.F1" content="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemCallCounts" />
+    <meta name="Microsoft.Help.F1" content="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemDeviceInformation" />
+    <meta name="Microsoft.Help.F1" content="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemConfigurationInformation" />
+    <meta name="Microsoft.Help.F1" content="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemProcessorPerformanceInformation" />
+    <meta name="Microsoft.Help.F1" content="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemProcessorTimes" />
+    <meta name="Microsoft.Help.F1" content="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemFlagsInformation" />
+    <meta name="Microsoft.Help.F1" content="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemGlobalFlag" />
+    <meta name="Microsoft.Help.F1" content="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemCallTimeInformation" />
+    <meta name="Microsoft.Help.F1" content="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemNotImplemented2" />
+    <meta name="Microsoft.Help.F1" content="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemModuleInformation" />
+    <meta name="Microsoft.Help.F1" content="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemLocksInformation" />
+    <meta name="Microsoft.Help.F1" content="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemLockInformation" />
+    <meta name="Microsoft.Help.F1" content="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemStackTraceInformation" />
+    <meta name="Microsoft.Help.F1" content="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemNotImplemented3" />
+    <meta name="Microsoft.Help.F1" content="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemPagedPoolInformation" />
+    <meta name="Microsoft.Help.F1" content="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemNotImplemented4" />
+    <meta name="Microsoft.Help.F1" content="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemNonPagedPoolInformation" />
+    <meta name="Microsoft.Help.F1" content="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemNotImplemented5" />
+    <meta name="Microsoft.Help.F1" content="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemHandleInformation" />
+    <meta name="Microsoft.Help.F1" content="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemObjectInformation" />
+    <meta name="Microsoft.Help.F1" content="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemPageFileInformation" />
+    <meta name="Microsoft.Help.F1" content="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemPagefileInformation" />
+    <meta name="Microsoft.Help.F1" content="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemVdmInstemulInformation" />
+    <meta name="Microsoft.Help.F1" content="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemInstructionEmulationCounts" />
+    <meta name="Microsoft.Help.F1" content="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemVdmBopInformation" />
+    <meta name="Microsoft.Help.F1" content="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemInvalidInfoClass1" />
+    <meta name="Microsoft.Help.F1" content="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemFileCacheInformation" />
+    <meta name="Microsoft.Help.F1" content="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemCacheInformation" />
+    <meta name="Microsoft.Help.F1" content="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemPoolTagInformation" />
+    <meta name="Microsoft.Help.F1" content="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemInterruptInformation" />
+    <meta name="Microsoft.Help.F1" content="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemProcessorStatistics" />
+    <meta name="Microsoft.Help.F1" content="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemDpcBehaviourInformation" />
+    <meta name="Microsoft.Help.F1" content="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemDpcInformation" />
+    <meta name="Microsoft.Help.F1" content="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemFullMemoryInformation" />
+    <meta name="Microsoft.Help.F1" content="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemNotImplemented6" />
+    <meta name="Microsoft.Help.F1" content="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemLoadImage" />
+    <meta name="Microsoft.Help.F1" content="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemUnloadImage" />
+    <meta name="Microsoft.Help.F1" content="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemTimeAdjustmentInformation" />
+    <meta name="Microsoft.Help.F1" content="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemTimeAdjustment" />
+    <meta name="Microsoft.Help.F1" content="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemSummaryMemoryInformation" />
+    <meta name="Microsoft.Help.F1" content="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemNotImplemented7" />
+    <meta name="Microsoft.Help.F1" content="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemNextEventIdInformation" />
+    <meta name="Microsoft.Help.F1" content="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemNotImplemented8" />
+    <meta name="Microsoft.Help.F1" content="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemEventIdsInformation" />
+    <meta name="Microsoft.Help.F1" content="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemNotImplemented9" />
+    <meta name="Microsoft.Help.F1" content="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemCrashDumpInformation" />
+    <meta name="Microsoft.Help.F1" content="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemExceptionInformation" />
+    <meta name="Microsoft.Help.F1" content="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemCrashDumpStateInformation" />
+    <meta name="Microsoft.Help.F1" content="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemKernelDebuggerInformation" />
+    <meta name="Microsoft.Help.F1" content="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemContextSwitchInformation" />
+    <meta name="Microsoft.Help.F1" content="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemRegistryQuotaInformation" />
+    <meta name="Microsoft.Help.F1" content="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemLoadAndCallImage" />
+    <meta name="Microsoft.Help.F1" content="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemPrioritySeparation" />
+    <meta name="Microsoft.Help.F1" content="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemPlugPlayBusInformation" />
+    <meta name="Microsoft.Help.F1" content="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemNotImplemented10" />
+    <meta name="Microsoft.Help.F1" content="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemDockInformation" />
+    <meta name="Microsoft.Help.F1" content="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemNotImplemented11" />
+    <meta name="Microsoft.Help.F1" content="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemInvalidInfoClass2" />
+    <meta name="Microsoft.Help.F1" content="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemProcessorSpeedInformation" />
+    <meta name="Microsoft.Help.F1" content="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemInvalidInfoClass3" />
+    <meta name="Microsoft.Help.F1" content="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemCurrentTimeZoneInformation" />
+    <meta name="Microsoft.Help.F1" content="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemTimeZoneInformation" />
+    <meta name="Microsoft.Help.F1" content="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemLookasideInformation" />
+    <meta name="Microsoft.Help.F1" content="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemSetTimeSlipEvent" />
+    <meta name="Microsoft.Help.F1" content="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemCreateSession" />
+    <meta name="Microsoft.Help.F1" content="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemDeleteSession" />
+    <meta name="Microsoft.Help.F1" content="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemInvalidInfoClass4" />
+    <meta name="Microsoft.Help.F1" content="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemRangeStartInformation" />
+    <meta name="Microsoft.Help.F1" content="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemVerifierInformation" />
+    <meta name="Microsoft.Help.F1" content="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemAddVerifier" />
+    <meta name="Microsoft.Help.F1" content="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemSessionProcessesInformation" />
+    <meta name="Microsoft.Help.F1" content="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemInformationClassMax" />
+    <meta name="Microsoft.Help.Id" content="T:System.Windows.API.SYSTEM_INFORMATION_CLASS" />
+    <meta name="Microsoft.Help.ContentType" content="Reference" />
+    <meta name="BrandingAware" content="'true'" />
+    <meta name="container" content="System.Windows.API" />
+    <meta name="file" content="e6d5d5c1-8d83-199b-004f-8767439c70eb" />
+    <meta name="guid" content="e6d5d5c1-8d83-199b-004f-8767439c70eb" />
+    <xml>
+      <MSHelp:Attr Name="AssetID" Value="T:System.Windows.API.SYSTEM_INFORMATION_CLASS" />
+      <MSHelp:TOCTitle Title="SYSTEM_INFORMATION_CLASS Enumeration" />
+      <MSHelp:RLTitle Title="SYSTEM_INFORMATION_CLASS Enumeration (System.Windows.API)" />
+      <MSHelp:Keyword Index="A" Term="T:System.Windows.API.SYSTEM_INFORMATION_CLASS" />
+      <MSHelp:Keyword Index="A" Term="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemInformationClassMin" />
+      <MSHelp:Keyword Index="A" Term="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemBasicInformation" />
+      <MSHelp:Keyword Index="A" Term="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemProcessorInformation" />
+      <MSHelp:Keyword Index="A" Term="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemPerformanceInformation" />
+      <MSHelp:Keyword Index="A" Term="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemTimeOfDayInformation" />
+      <MSHelp:Keyword Index="A" Term="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemPathInformation" />
+      <MSHelp:Keyword Index="A" Term="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemNotImplemented1" />
+      <MSHelp:Keyword Index="A" Term="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemProcessInformation" />
+      <MSHelp:Keyword Index="A" Term="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemProcessesAndThreadsInformation" />
+      <MSHelp:Keyword Index="A" Term="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemCallCountInfoInformation" />
+      <MSHelp:Keyword Index="A" Term="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemCallCounts" />
+      <MSHelp:Keyword Index="A" Term="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemDeviceInformation" />
+      <MSHelp:Keyword Index="A" Term="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemConfigurationInformation" />
+      <MSHelp:Keyword Index="A" Term="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemProcessorPerformanceInformation" />
+      <MSHelp:Keyword Index="A" Term="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemProcessorTimes" />
+      <MSHelp:Keyword Index="A" Term="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemFlagsInformation" />
+      <MSHelp:Keyword Index="A" Term="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemGlobalFlag" />
+      <MSHelp:Keyword Index="A" Term="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemCallTimeInformation" />
+      <MSHelp:Keyword Index="A" Term="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemNotImplemented2" />
+      <MSHelp:Keyword Index="A" Term="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemModuleInformation" />
+      <MSHelp:Keyword Index="A" Term="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemLocksInformation" />
+      <MSHelp:Keyword Index="A" Term="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemLockInformation" />
+      <MSHelp:Keyword Index="A" Term="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemStackTraceInformation" />
+      <MSHelp:Keyword Index="A" Term="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemNotImplemented3" />
+      <MSHelp:Keyword Index="A" Term="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemPagedPoolInformation" />
+      <MSHelp:Keyword Index="A" Term="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemNotImplemented4" />
+      <MSHelp:Keyword Index="A" Term="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemNonPagedPoolInformation" />
+      <MSHelp:Keyword Index="A" Term="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemNotImplemented5" />
+      <MSHelp:Keyword Index="A" Term="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemHandleInformation" />
+      <MSHelp:Keyword Index="A" Term="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemObjectInformation" />
+      <MSHelp:Keyword Index="A" Term="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemPageFileInformation" />
+      <MSHelp:Keyword Index="A" Term="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemPagefileInformation" />
+      <MSHelp:Keyword Index="A" Term="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemVdmInstemulInformation" />
+      <MSHelp:Keyword Index="A" Term="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemInstructionEmulationCounts" />
+      <MSHelp:Keyword Index="A" Term="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemVdmBopInformation" />
+      <MSHelp:Keyword Index="A" Term="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemInvalidInfoClass1" />
+      <MSHelp:Keyword Index="A" Term="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemFileCacheInformation" />
+      <MSHelp:Keyword Index="A" Term="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemCacheInformation" />
+      <MSHelp:Keyword Index="A" Term="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemPoolTagInformation" />
+      <MSHelp:Keyword Index="A" Term="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemInterruptInformation" />
+      <MSHelp:Keyword Index="A" Term="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemProcessorStatistics" />
+      <MSHelp:Keyword Index="A" Term="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemDpcBehaviourInformation" />
+      <MSHelp:Keyword Index="A" Term="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemDpcInformation" />
+      <MSHelp:Keyword Index="A" Term="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemFullMemoryInformation" />
+      <MSHelp:Keyword Index="A" Term="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemNotImplemented6" />
+      <MSHelp:Keyword Index="A" Term="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemLoadImage" />
+      <MSHelp:Keyword Index="A" Term="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemUnloadImage" />
+      <MSHelp:Keyword Index="A" Term="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemTimeAdjustmentInformation" />
+      <MSHelp:Keyword Index="A" Term="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemTimeAdjustment" />
+      <MSHelp:Keyword Index="A" Term="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemSummaryMemoryInformation" />
+      <MSHelp:Keyword Index="A" Term="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemNotImplemented7" />
+      <MSHelp:Keyword Index="A" Term="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemNextEventIdInformation" />
+      <MSHelp:Keyword Index="A" Term="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemNotImplemented8" />
+      <MSHelp:Keyword Index="A" Term="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemEventIdsInformation" />
+      <MSHelp:Keyword Index="A" Term="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemNotImplemented9" />
+      <MSHelp:Keyword Index="A" Term="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemCrashDumpInformation" />
+      <MSHelp:Keyword Index="A" Term="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemExceptionInformation" />
+      <MSHelp:Keyword Index="A" Term="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemCrashDumpStateInformation" />
+      <MSHelp:Keyword Index="A" Term="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemKernelDebuggerInformation" />
+      <MSHelp:Keyword Index="A" Term="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemContextSwitchInformation" />
+      <MSHelp:Keyword Index="A" Term="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemRegistryQuotaInformation" />
+      <MSHelp:Keyword Index="A" Term="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemLoadAndCallImage" />
+      <MSHelp:Keyword Index="A" Term="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemPrioritySeparation" />
+      <MSHelp:Keyword Index="A" Term="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemPlugPlayBusInformation" />
+      <MSHelp:Keyword Index="A" Term="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemNotImplemented10" />
+      <MSHelp:Keyword Index="A" Term="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemDockInformation" />
+      <MSHelp:Keyword Index="A" Term="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemNotImplemented11" />
+      <MSHelp:Keyword Index="A" Term="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemInvalidInfoClass2" />
+      <MSHelp:Keyword Index="A" Term="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemProcessorSpeedInformation" />
+      <MSHelp:Keyword Index="A" Term="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemInvalidInfoClass3" />
+      <MSHelp:Keyword Index="A" Term="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemCurrentTimeZoneInformation" />
+      <MSHelp:Keyword Index="A" Term="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemTimeZoneInformation" />
+      <MSHelp:Keyword Index="A" Term="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemLookasideInformation" />
+      <MSHelp:Keyword Index="A" Term="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemSetTimeSlipEvent" />
+      <MSHelp:Keyword Index="A" Term="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemCreateSession" />
+      <MSHelp:Keyword Index="A" Term="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemDeleteSession" />
+      <MSHelp:Keyword Index="A" Term="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemInvalidInfoClass4" />
+      <MSHelp:Keyword Index="A" Term="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemRangeStartInformation" />
+      <MSHelp:Keyword Index="A" Term="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemVerifierInformation" />
+      <MSHelp:Keyword Index="A" Term="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemAddVerifier" />
+      <MSHelp:Keyword Index="A" Term="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemSessionProcessesInformation" />
+      <MSHelp:Keyword Index="A" Term="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemInformationClassMax" />
+      <MSHelp:Keyword Index="A" Term="frlrfSystemWindowsAPISYSTEM_INFORMATION_CLASSClassTopic" />
+      <MSHelp:Keyword Index="K" Term="SYSTEM_INFORMATION_CLASS enumeration" />
+      <MSHelp:Keyword Index="K" Term="System.Windows.API.SYSTEM_INFORMATION_CLASS enumeration" />
+      <MSHelp:Keyword Index="K" Term="SystemInformationClassMin enumeration member" />
+      <MSHelp:Keyword Index="K" Term="SystemBasicInformation enumeration member" />
+      <MSHelp:Keyword Index="K" Term="SystemProcessorInformation enumeration member" />
+      <MSHelp:Keyword Index="K" Term="SystemPerformanceInformation enumeration member" />
+      <MSHelp:Keyword Index="K" Term="SystemTimeOfDayInformation enumeration member" />
+      <MSHelp:Keyword Index="K" Term="SystemPathInformation enumeration member" />
+      <MSHelp:Keyword Index="K" Term="SystemNotImplemented1 enumeration member" />
+      <MSHelp:Keyword Index="K" Term="SystemProcessInformation enumeration member" />
+      <MSHelp:Keyword Index="K" Term="SystemProcessesAndThreadsInformation enumeration member" />
+      <MSHelp:Keyword Index="K" Term="SystemCallCountInfoInformation enumeration member" />
+      <MSHelp:Keyword Index="K" Term="SystemCallCounts enumeration member" />
+      <MSHelp:Keyword Index="K" Term="SystemDeviceInformation enumeration member" />
+      <MSHelp:Keyword Index="K" Term="SystemConfigurationInformation enumeration member" />
+      <MSHelp:Keyword Index="K" Term="SystemProcessorPerformanceInformation enumeration member" />
+      <MSHelp:Keyword Index="K" Term="SystemProcessorTimes enumeration member" />
+      <MSHelp:Keyword Index="K" Term="SystemFlagsInformation enumeration member" />
+      <MSHelp:Keyword Index="K" Term="SystemGlobalFlag enumeration member" />
+      <MSHelp:Keyword Index="K" Term="SystemCallTimeInformation enumeration member" />
+      <MSHelp:Keyword Index="K" Term="SystemNotImplemented2 enumeration member" />
+      <MSHelp:Keyword Index="K" Term="SystemModuleInformation enumeration member" />
+      <MSHelp:Keyword Index="K" Term="SystemLocksInformation enumeration member" />
+      <MSHelp:Keyword Index="K" Term="SystemLockInformation enumeration member" />
+      <MSHelp:Keyword Index="K" Term="SystemStackTraceInformation enumeration member" />
+      <MSHelp:Keyword Index="K" Term="SystemNotImplemented3 enumeration member" />
+      <MSHelp:Keyword Index="K" Term="SystemPagedPoolInformation enumeration member" />
+      <MSHelp:Keyword Index="K" Term="SystemNotImplemented4 enumeration member" />
+      <MSHelp:Keyword Index="K" Term="SystemNonPagedPoolInformation enumeration member" />
+      <MSHelp:Keyword Index="K" Term="SystemNotImplemented5 enumeration member" />
+      <MSHelp:Keyword Index="K" Term="SystemHandleInformation enumeration member" />
+      <MSHelp:Keyword Index="K" Term="SystemObjectInformation enumeration member" />
+      <MSHelp:Keyword Index="K" Term="SystemPageFileInformation enumeration member" />
+      <MSHelp:Keyword Index="K" Term="SystemPagefileInformation enumeration member" />
+      <MSHelp:Keyword Index="K" Term="SystemVdmInstemulInformation enumeration member" />
+      <MSHelp:Keyword Index="K" Term="SystemInstructionEmulationCounts enumeration member" />
+      <MSHelp:Keyword Index="K" Term="SystemVdmBopInformation enumeration member" />
+      <MSHelp:Keyword Index="K" Term="SystemInvalidInfoClass1 enumeration member" />
+      <MSHelp:Keyword Index="K" Term="SystemFileCacheInformation enumeration member" />
+      <MSHelp:Keyword Index="K" Term="SystemCacheInformation enumeration member" />
+      <MSHelp:Keyword Index="K" Term="SystemPoolTagInformation enumeration member" />
+      <MSHelp:Keyword Index="K" Term="SystemInterruptInformation enumeration member" />
+      <MSHelp:Keyword Index="K" Term="SystemProcessorStatistics enumeration member" />
+      <MSHelp:Keyword Index="K" Term="SystemDpcBehaviourInformation enumeration member" />
+      <MSHelp:Keyword Index="K" Term="SystemDpcInformation enumeration member" />
+      <MSHelp:Keyword Index="K" Term="SystemFullMemoryInformation enumeration member" />
+      <MSHelp:Keyword Index="K" Term="SystemNotImplemented6 enumeration member" />
+      <MSHelp:Keyword Index="K" Term="SystemLoadImage enumeration member" />
+      <MSHelp:Keyword Index="K" Term="SystemUnloadImage enumeration member" />
+      <MSHelp:Keyword Index="K" Term="SystemTimeAdjustmentInformation enumeration member" />
+      <MSHelp:Keyword Index="K" Term="SystemTimeAdjustment enumeration member" />
+      <MSHelp:Keyword Index="K" Term="SystemSummaryMemoryInformation enumeration member" />
+      <MSHelp:Keyword Index="K" Term="SystemNotImplemented7 enumeration member" />
+      <MSHelp:Keyword Index="K" Term="SystemNextEventIdInformation enumeration member" />
+      <MSHelp:Keyword Index="K" Term="SystemNotImplemented8 enumeration member" />
+      <MSHelp:Keyword Index="K" Term="SystemEventIdsInformation enumeration member" />
+      <MSHelp:Keyword Index="K" Term="SystemNotImplemented9 enumeration member" />
+      <MSHelp:Keyword Index="K" Term="SystemCrashDumpInformation enumeration member" />
+      <MSHelp:Keyword Index="K" Term="SystemExceptionInformation enumeration member" />
+      <MSHelp:Keyword Index="K" Term="SystemCrashDumpStateInformation enumeration member" />
+      <MSHelp:Keyword Index="K" Term="SystemKernelDebuggerInformation enumeration member" />
+      <MSHelp:Keyword Index="K" Term="SystemContextSwitchInformation enumeration member" />
+      <MSHelp:Keyword Index="K" Term="SystemRegistryQuotaInformation enumeration member" />
+      <MSHelp:Keyword Index="K" Term="SystemLoadAndCallImage enumeration member" />
+      <MSHelp:Keyword Index="K" Term="SystemPrioritySeparation enumeration member" />
+      <MSHelp:Keyword Index="K" Term="SystemPlugPlayBusInformation enumeration member" />
+      <MSHelp:Keyword Index="K" Term="SystemNotImplemented10 enumeration member" />
+      <MSHelp:Keyword Index="K" Term="SystemDockInformation enumeration member" />
+      <MSHelp:Keyword Index="K" Term="SystemNotImplemented11 enumeration member" />
+      <MSHelp:Keyword Index="K" Term="SystemInvalidInfoClass2 enumeration member" />
+      <MSHelp:Keyword Index="K" Term="SystemProcessorSpeedInformation enumeration member" />
+      <MSHelp:Keyword Index="K" Term="SystemInvalidInfoClass3 enumeration member" />
+      <MSHelp:Keyword Index="K" Term="SystemCurrentTimeZoneInformation enumeration member" />
+      <MSHelp:Keyword Index="K" Term="SystemTimeZoneInformation enumeration member" />
+      <MSHelp:Keyword Index="K" Term="SystemLookasideInformation enumeration member" />
+      <MSHelp:Keyword Index="K" Term="SystemSetTimeSlipEvent enumeration member" />
+      <MSHelp:Keyword Index="K" Term="SystemCreateSession enumeration member" />
+      <MSHelp:Keyword Index="K" Term="SystemDeleteSession enumeration member" />
+      <MSHelp:Keyword Index="K" Term="SystemInvalidInfoClass4 enumeration member" />
+      <MSHelp:Keyword Index="K" Term="SystemRangeStartInformation enumeration member" />
+      <MSHelp:Keyword Index="K" Term="SystemVerifierInformation enumeration member" />
+      <MSHelp:Keyword Index="K" Term="SystemAddVerifier enumeration member" />
+      <MSHelp:Keyword Index="K" Term="SystemSessionProcessesInformation enumeration member" />
+      <MSHelp:Keyword Index="K" Term="SystemInformationClassMax enumeration member" />
+      <MSHelp:Keyword Index="F" Term="System.Windows.API.SYSTEM_INFORMATION_CLASS" />
+      <MSHelp:Keyword Index="F" Term="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemInformationClassMin" />
+      <MSHelp:Keyword Index="F" Term="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemBasicInformation" />
+      <MSHelp:Keyword Index="F" Term="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemProcessorInformation" />
+      <MSHelp:Keyword Index="F" Term="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemPerformanceInformation" />
+      <MSHelp:Keyword Index="F" Term="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemTimeOfDayInformation" />
+      <MSHelp:Keyword Index="F" Term="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemPathInformation" />
+      <MSHelp:Keyword Index="F" Term="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemNotImplemented1" />
+      <MSHelp:Keyword Index="F" Term="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemProcessInformation" />
+      <MSHelp:Keyword Index="F" Term="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemProcessesAndThreadsInformation" />
+      <MSHelp:Keyword Index="F" Term="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemCallCountInfoInformation" />
+      <MSHelp:Keyword Index="F" Term="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemCallCounts" />
+      <MSHelp:Keyword Index="F" Term="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemDeviceInformation" />
+      <MSHelp:Keyword Index="F" Term="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemConfigurationInformation" />
+      <MSHelp:Keyword Index="F" Term="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemProcessorPerformanceInformation" />
+      <MSHelp:Keyword Index="F" Term="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemProcessorTimes" />
+      <MSHelp:Keyword Index="F" Term="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemFlagsInformation" />
+      <MSHelp:Keyword Index="F" Term="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemGlobalFlag" />
+      <MSHelp:Keyword Index="F" Term="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemCallTimeInformation" />
+      <MSHelp:Keyword Index="F" Term="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemNotImplemented2" />
+      <MSHelp:Keyword Index="F" Term="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemModuleInformation" />
+      <MSHelp:Keyword Index="F" Term="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemLocksInformation" />
+      <MSHelp:Keyword Index="F" Term="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemLockInformation" />
+      <MSHelp:Keyword Index="F" Term="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemStackTraceInformation" />
+      <MSHelp:Keyword Index="F" Term="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemNotImplemented3" />
+      <MSHelp:Keyword Index="F" Term="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemPagedPoolInformation" />
+      <MSHelp:Keyword Index="F" Term="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemNotImplemented4" />
+      <MSHelp:Keyword Index="F" Term="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemNonPagedPoolInformation" />
+      <MSHelp:Keyword Index="F" Term="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemNotImplemented5" />
+      <MSHelp:Keyword Index="F" Term="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemHandleInformation" />
+      <MSHelp:Keyword Index="F" Term="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemObjectInformation" />
+      <MSHelp:Keyword Index="F" Term="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemPageFileInformation" />
+      <MSHelp:Keyword Index="F" Term="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemPagefileInformation" />
+      <MSHelp:Keyword Index="F" Term="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemVdmInstemulInformation" />
+      <MSHelp:Keyword Index="F" Term="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemInstructionEmulationCounts" />
+      <MSHelp:Keyword Index="F" Term="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemVdmBopInformation" />
+      <MSHelp:Keyword Index="F" Term="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemInvalidInfoClass1" />
+      <MSHelp:Keyword Index="F" Term="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemFileCacheInformation" />
+      <MSHelp:Keyword Index="F" Term="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemCacheInformation" />
+      <MSHelp:Keyword Index="F" Term="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemPoolTagInformation" />
+      <MSHelp:Keyword Index="F" Term="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemInterruptInformation" />
+      <MSHelp:Keyword Index="F" Term="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemProcessorStatistics" />
+      <MSHelp:Keyword Index="F" Term="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemDpcBehaviourInformation" />
+      <MSHelp:Keyword Index="F" Term="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemDpcInformation" />
+      <MSHelp:Keyword Index="F" Term="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemFullMemoryInformation" />
+      <MSHelp:Keyword Index="F" Term="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemNotImplemented6" />
+      <MSHelp:Keyword Index="F" Term="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemLoadImage" />
+      <MSHelp:Keyword Index="F" Term="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemUnloadImage" />
+      <MSHelp:Keyword Index="F" Term="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemTimeAdjustmentInformation" />
+      <MSHelp:Keyword Index="F" Term="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemTimeAdjustment" />
+      <MSHelp:Keyword Index="F" Term="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemSummaryMemoryInformation" />
+      <MSHelp:Keyword Index="F" Term="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemNotImplemented7" />
+      <MSHelp:Keyword Index="F" Term="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemNextEventIdInformation" />
+      <MSHelp:Keyword Index="F" Term="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemNotImplemented8" />
+      <MSHelp:Keyword Index="F" Term="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemEventIdsInformation" />
+      <MSHelp:Keyword Index="F" Term="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemNotImplemented9" />
+      <MSHelp:Keyword Index="F" Term="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemCrashDumpInformation" />
+      <MSHelp:Keyword Index="F" Term="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemExceptionInformation" />
+      <MSHelp:Keyword Index="F" Term="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemCrashDumpStateInformation" />
+      <MSHelp:Keyword Index="F" Term="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemKernelDebuggerInformation" />
+      <MSHelp:Keyword Index="F" Term="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemContextSwitchInformation" />
+      <MSHelp:Keyword Index="F" Term="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemRegistryQuotaInformation" />
+      <MSHelp:Keyword Index="F" Term="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemLoadAndCallImage" />
+      <MSHelp:Keyword Index="F" Term="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemPrioritySeparation" />
+      <MSHelp:Keyword Index="F" Term="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemPlugPlayBusInformation" />
+      <MSHelp:Keyword Index="F" Term="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemNotImplemented10" />
+      <MSHelp:Keyword Index="F" Term="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemDockInformation" />
+      <MSHelp:Keyword Index="F" Term="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemNotImplemented11" />
+      <MSHelp:Keyword Index="F" Term="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemInvalidInfoClass2" />
+      <MSHelp:Keyword Index="F" Term="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemProcessorSpeedInformation" />
+      <MSHelp:Keyword Index="F" Term="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemInvalidInfoClass3" />
+      <MSHelp:Keyword Index="F" Term="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemCurrentTimeZoneInformation" />
+      <MSHelp:Keyword Index="F" Term="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemTimeZoneInformation" />
+      <MSHelp:Keyword Index="F" Term="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemLookasideInformation" />
+      <MSHelp:Keyword Index="F" Term="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemSetTimeSlipEvent" />
+      <MSHelp:Keyword Index="F" Term="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemCreateSession" />
+      <MSHelp:Keyword Index="F" Term="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemDeleteSession" />
+      <MSHelp:Keyword Index="F" Term="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemInvalidInfoClass4" />
+      <MSHelp:Keyword Index="F" Term="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemRangeStartInformation" />
+      <MSHelp:Keyword Index="F" Term="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemVerifierInformation" />
+      <MSHelp:Keyword Index="F" Term="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemAddVerifier" />
+      <MSHelp:Keyword Index="F" Term="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemSessionProcessesInformation" />
+      <MSHelp:Keyword Index="F" Term="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemInformationClassMax" />
+      <MSHelp:Attr Name="HelpPriority" Value="2" />
+      <MSHelp:Attr Name="APIType" Value="Managed" />
+      <MSHelp:Attr Name="APILocation" Value="Windows.Forms.Extensions.dll" />
+      <MSHelp:Attr Name="APIName" Value="System.Windows.API.SYSTEM_INFORMATION_CLASS" />
+      <MSHelp:Attr Name="APIName" Value="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemInformationClassMin" />
+      <MSHelp:Attr Name="APIName" Value="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemBasicInformation" />
+      <MSHelp:Attr Name="APIName" Value="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemProcessorInformation" />
+      <MSHelp:Attr Name="APIName" Value="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemPerformanceInformation" />
+      <MSHelp:Attr Name="APIName" Value="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemTimeOfDayInformation" />
+      <MSHelp:Attr Name="APIName" Value="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemPathInformation" />
+      <MSHelp:Attr Name="APIName" Value="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemNotImplemented1" />
+      <MSHelp:Attr Name="APIName" Value="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemProcessInformation" />
+      <MSHelp:Attr Name="APIName" Value="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemProcessesAndThreadsInformation" />
+      <MSHelp:Attr Name="APIName" Value="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemCallCountInfoInformation" />
+      <MSHelp:Attr Name="APIName" Value="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemCallCounts" />
+      <MSHelp:Attr Name="APIName" Value="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemDeviceInformation" />
+      <MSHelp:Attr Name="APIName" Value="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemConfigurationInformation" />
+      <MSHelp:Attr Name="APIName" Value="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemProcessorPerformanceInformation" />
+      <MSHelp:Attr Name="APIName" Value="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemProcessorTimes" />
+      <MSHelp:Attr Name="APIName" Value="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemFlagsInformation" />
+      <MSHelp:Attr Name="APIName" Value="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemGlobalFlag" />
+      <MSHelp:Attr Name="APIName" Value="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemCallTimeInformation" />
+      <MSHelp:Attr Name="APIName" Value="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemNotImplemented2" />
+      <MSHelp:Attr Name="APIName" Value="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemModuleInformation" />
+      <MSHelp:Attr Name="APIName" Value="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemLocksInformation" />
+      <MSHelp:Attr Name="APIName" Value="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemLockInformation" />
+      <MSHelp:Attr Name="APIName" Value="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemStackTraceInformation" />
+      <MSHelp:Attr Name="APIName" Value="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemNotImplemented3" />
+      <MSHelp:Attr Name="APIName" Value="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemPagedPoolInformation" />
+      <MSHelp:Attr Name="APIName" Value="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemNotImplemented4" />
+      <MSHelp:Attr Name="APIName" Value="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemNonPagedPoolInformation" />
+      <MSHelp:Attr Name="APIName" Value="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemNotImplemented5" />
+      <MSHelp:Attr Name="APIName" Value="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemHandleInformation" />
+      <MSHelp:Attr Name="APIName" Value="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemObjectInformation" />
+      <MSHelp:Attr Name="APIName" Value="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemPageFileInformation" />
+      <MSHelp:Attr Name="APIName" Value="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemPagefileInformation" />
+      <MSHelp:Attr Name="APIName" Value="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemVdmInstemulInformation" />
+      <MSHelp:Attr Name="APIName" Value="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemInstructionEmulationCounts" />
+      <MSHelp:Attr Name="APIName" Value="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemVdmBopInformation" />
+      <MSHelp:Attr Name="APIName" Value="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemInvalidInfoClass1" />
+      <MSHelp:Attr Name="APIName" Value="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemFileCacheInformation" />
+      <MSHelp:Attr Name="APIName" Value="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemCacheInformation" />
+      <MSHelp:Attr Name="APIName" Value="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemPoolTagInformation" />
+      <MSHelp:Attr Name="APIName" Value="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemInterruptInformation" />
+      <MSHelp:Attr Name="APIName" Value="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemProcessorStatistics" />
+      <MSHelp:Attr Name="APIName" Value="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemDpcBehaviourInformation" />
+      <MSHelp:Attr Name="APIName" Value="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemDpcInformation" />
+      <MSHelp:Attr Name="APIName" Value="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemFullMemoryInformation" />
+      <MSHelp:Attr Name="APIName" Value="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemNotImplemented6" />
+      <MSHelp:Attr Name="APIName" Value="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemLoadImage" />
+      <MSHelp:Attr Name="APIName" Value="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemUnloadImage" />
+      <MSHelp:Attr Name="APIName" Value="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemTimeAdjustmentInformation" />
+      <MSHelp:Attr Name="APIName" Value="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemTimeAdjustment" />
+      <MSHelp:Attr Name="APIName" Value="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemSummaryMemoryInformation" />
+      <MSHelp:Attr Name="APIName" Value="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemNotImplemented7" />
+      <MSHelp:Attr Name="APIName" Value="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemNextEventIdInformation" />
+      <MSHelp:Attr Name="APIName" Value="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemNotImplemented8" />
+      <MSHelp:Attr Name="APIName" Value="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemEventIdsInformation" />
+      <MSHelp:Attr Name="APIName" Value="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemNotImplemented9" />
+      <MSHelp:Attr Name="APIName" Value="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemCrashDumpInformation" />
+      <MSHelp:Attr Name="APIName" Value="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemExceptionInformation" />
+      <MSHelp:Attr Name="APIName" Value="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemCrashDumpStateInformation" />
+      <MSHelp:Attr Name="APIName" Value="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemKernelDebuggerInformation" />
+      <MSHelp:Attr Name="APIName" Value="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemContextSwitchInformation" />
+      <MSHelp:Attr Name="APIName" Value="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemRegistryQuotaInformation" />
+      <MSHelp:Attr Name="APIName" Value="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemLoadAndCallImage" />
+      <MSHelp:Attr Name="APIName" Value="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemPrioritySeparation" />
+      <MSHelp:Attr Name="APIName" Value="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemPlugPlayBusInformation" />
+      <MSHelp:Attr Name="APIName" Value="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemNotImplemented10" />
+      <MSHelp:Attr Name="APIName" Value="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemDockInformation" />
+      <MSHelp:Attr Name="APIName" Value="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemNotImplemented11" />
+      <MSHelp:Attr Name="APIName" Value="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemInvalidInfoClass2" />
+      <MSHelp:Attr Name="APIName" Value="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemProcessorSpeedInformation" />
+      <MSHelp:Attr Name="APIName" Value="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemInvalidInfoClass3" />
+      <MSHelp:Attr Name="APIName" Value="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemCurrentTimeZoneInformation" />
+      <MSHelp:Attr Name="APIName" Value="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemTimeZoneInformation" />
+      <MSHelp:Attr Name="APIName" Value="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemLookasideInformation" />
+      <MSHelp:Attr Name="APIName" Value="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemSetTimeSlipEvent" />
+      <MSHelp:Attr Name="APIName" Value="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemCreateSession" />
+      <MSHelp:Attr Name="APIName" Value="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemDeleteSession" />
+      <MSHelp:Attr Name="APIName" Value="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemInvalidInfoClass4" />
+      <MSHelp:Attr Name="APIName" Value="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemRangeStartInformation" />
+      <MSHelp:Attr Name="APIName" Value="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemVerifierInformation" />
+      <MSHelp:Attr Name="APIName" Value="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemAddVerifier" />
+      <MSHelp:Attr Name="APIName" Value="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemSessionProcessesInformation" />
+      <MSHelp:Attr Name="APIName" Value="System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemInformationClassMax" />
+      <MSHelp:Attr Name="DevLang" Value="C#" />
+      <MSHelp:Attr Name="DevLang" Value="VB" />
+      <MSHelp:Attr Name="DevLang" Value="C++" />
+      <MSHelp:Attr Name="Locale" Value="en-us" />
+      <MSHelp:Attr Name="TopicType" Value="kbSyntax" />
+      <MSHelp:Attr Name="TopicType" Value="apiref" />
+      <MSHelp:Attr Name="AssemblyVersion" Value="0.2.4510.21587" />
+    </xml>
+    <link type="text/css" rel="stylesheet" href="./../styles/Presentation.css" />
+    <meta name="SelfBranded" content="true" />
+  </head>
+  <body onload="onLoad()" class="primary-mtps-offline-document">
+    <div class="OH_outerDiv">
+      <div class="OH_outerContent">
+        <div class="OH_topic">
+          <div class="OH_title">
+            <table>
+              <tr>
+                <td class="OH_tdTitleColumn">SYSTEM_INFORMATION_CLASS Enumeration</td>
+                <td class="OH_tdLogoColumn">FormX</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <div class="OH_feedbacklink">
+          <a href="mailto:mail@florian-rappl.de?subject=FormX+SYSTEM_INFORMATION_CLASS+Enumeration+100+EN-US&amp;body=Your%20feedback%20is%20used%20to%20improve%20the%20documentation%20and%20the%20product.%20Your%20e-mail%20address%20will%20not%20be%20used%20for%20any%20other%20purpose%20and%20is%20disposed%20of%20after%20the%20issue%20you%20report%20is%20resolved.%20While%20working%20to%20resolve%20the%20issue%20that%20you%20report%2c%20you%20may%20be%20contacted%20via%20e-mail%20to%20get%20further%20details%20or%20clarification%20on%20the%20feedback%20you%20sent.%20After%20the%20issue%20you%20report%20has%20been%20addressed%2c%20you%20may%20receive%20an%20e-mail%20to%20let%20you%20know%20that%20your%20feedback%20has%20been%20addressed.">Send Feedback</a>
+        </div>
+        <div id="mainSection">
+          <div id="mainBody">
+            <span class="introStyle">Windows Forms eXtensions</span>
+            <p></p>
+            <b>Namespace:</b> <a href="4ed77504-ccf6-f5fe-69d0-5810f0e5089f.htm" target="">System.Windows.API</a><br /><b>Assembly:</b> <span sdata="assembly">Windows.Forms.Extensions</span> (in Windows.Forms.Extensions.dll) Version: 0.2.4510.21587 (0.2.*)<div class="OH_CollapsibleAreaRegion"><div class="OH_regiontitle">Syntax</div><div class="OH_CollapsibleArea_HrDiv"><hr class="OH_CollapsibleArea_Hr" /></div></div><div class="OH_clear"></div><div id="snippetGroup_Syntax" class="code"><div id="ID0ECADAAAAA" class="OH_CodeSnippetContainer"><div class="OH_CodeSnippetContainerTabs" id="ID0ECADAAAAA_tabs"><div class="OH_CodeSnippetContainerTabLeftActive" id="ID0ECADAAAAA_tabimgleft"></div><div id="ID0ECADAAAAA_tab1" class="OH_CodeSnippetContainerTabActive" EnableCopyCode="true"><a href="javascript:ChangeTab('ID0ECADAAAAA','Visual Basic','1','5')">VB</a></div><div id="ID0ECADAAAAA_tab2" class="OH_CodeSnippetContainerTab" EnableCopyCode="true"><a href="javascript:ChangeTab('ID0ECADAAAAA','C#','2','5')">C#</a></div><div id="ID0ECADAAAAA_tab3" class="OH_CodeSnippetContainerTab" EnableCopyCode="true"><a href="javascript:ChangeTab('ID0ECADAAAAA','Visual C++','3','5')">C++</a></div><div id="ID0ECADAAAAA_tab4" class="OH_CodeSnippetContainerTabDisabledNotFirst" EnableCopyCode="true" disabled="true"><a>F#</a></div><div id="ID0ECADAAAAA_tab5" class="OH_CodeSnippetContainerTabDisabledNotFirst" EnableCopyCode="true" disabled="true"><a>JScript</a></div><div class="OH_CodeSnippetContainerTabRight" id="ID0ECADAAAAA_tabimgright"></div></div><div id="ID0ECADAAAAA_codecollection" class="OH_CodeSnippetContainerCodeCollection"><div class="OH_CodeSnippetToolBar"><div class="OH_CodeSnippetToolBarText"><a id="ID0ECADAAAAA_ViewColorized" href="javascript:ExchangeTitleContent('ID0ECADAAAAA','5')" title="View Colorized" style="display: none">View Colorized</a><a id="ID0ECADAAAAA_copycode" href="javascript:CopyToClipboard('ID0ECADAAAAA','5')" title="Copy to Clipboard">Copy to Clipboard</a><a id="ID0ECADAAAAA_PrintText" class="OH_PrintText" href="javascript:Print('ID0ECADAAAAA','5')" title="Print">Print</a></div></div><div id="ID0ECADAAAAA_code_Div1" class="OH_CodeSnippetContainerCode" style="display: block"><pre style="white-space:nowrap;word-wrap:normal;"><span class="keyword">Public</span> <span class="keyword">Enumeration</span> <span class="identifier">SYSTEM_INFORMATION_CLASS</span></pre></div><div id="ID0ECADAAAAA_code_Plain_Div1" class="OH_CodeSnippetContainerCode" style="display: none"><pre>Public Enumeration SYSTEM_INFORMATION_CLASS</pre></div><div id="ID0ECADAAAAA_code_Div2" class="OH_CodeSnippetContainerCode" style="display: none"><pre style="white-space:nowrap;word-wrap:normal;"><span class="keyword">public</span> <span class="keyword">enum</span> <span class="identifier">SYSTEM_INFORMATION_CLASS</span></pre></div><div id="ID0ECADAAAAA_code_Plain_Div2" class="OH_CodeSnippetContainerCode" style="display: none"><pre>public enum SYSTEM_INFORMATION_CLASS</pre></div><div id="ID0ECADAAAAA_code_Div3" class="OH_CodeSnippetContainerCode" style="display: none"><pre style="white-space:nowrap;word-wrap:normal;"><span class="keyword">public</span> <span class="keyword">enum class</span> <span class="identifier">SYSTEM_INFORMATION_CLASS</span></pre></div><div id="ID0ECADAAAAA_code_Plain_Div3" class="OH_CodeSnippetContainerCode" style="display: none"><pre>public enum class SYSTEM_INFORMATION_CLASS</pre></div><div id="ID0ECADAAAAA_code_Div4" class="OH_CodeSnippetContainerCode" style="display: none"><pre /></div><div id="ID0ECADAAAAA_code_Plain_Div4" class="OH_CodeSnippetContainerCode" style="display: none"><pre /></div><div id="ID0ECADAAAAA_code_Div5" class="OH_CodeSnippetContainerCode" style="display: none"><pre /></div><div id="ID0ECADAAAAA_code_Plain_Div5" class="OH_CodeSnippetContainerCode" style="display: none"><pre /></div></div></div><script>addSpecificTextLanguageTagSet('ID0ECADAAAAA');</script></div><div id="enumerationSection"><div class="OH_CollapsibleAreaRegion"><div class="OH_regiontitle">Members</div><div class="OH_CollapsibleArea_HrDiv"><hr class="OH_CollapsibleArea_Hr" /></div></div><div class="OH_clear"></div><table id="memberList" class="members"><tr><th class="ps_iconColumn">
+									 
+								</th><th class="ps_nameColumn">Member name</th><th class="ps_valueColumn">Value</th><th class="ps_descriptionColumn">Description</th></tr><tr><td></td><td target="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemInformationClassMin"><span class="selflink">SystemInformationClassMin</span></td><td>0</td><td></td></tr><tr><td></td><td target="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemBasicInformation"><span class="selflink">SystemBasicInformation</span></td><td>0</td><td></td></tr><tr><td></td><td target="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemProcessorInformation"><span class="selflink">SystemProcessorInformation</span></td><td>1</td><td></td></tr><tr><td></td><td target="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemPerformanceInformation"><span class="selflink">SystemPerformanceInformation</span></td><td>2</td><td></td></tr><tr><td></td><td target="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemTimeOfDayInformation"><span class="selflink">SystemTimeOfDayInformation</span></td><td>3</td><td></td></tr><tr><td></td><td target="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemPathInformation"><span class="selflink">SystemPathInformation</span></td><td>4</td><td></td></tr><tr><td></td><td target="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemNotImplemented1"><span class="selflink">SystemNotImplemented1</span></td><td>4</td><td></td></tr><tr><td></td><td target="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemProcessInformation"><span class="selflink">SystemProcessInformation</span></td><td>5</td><td></td></tr><tr><td></td><td target="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemProcessesAndThreadsInformation"><span class="selflink">SystemProcessesAndThreadsInformation</span></td><td>5</td><td></td></tr><tr><td></td><td target="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemCallCountInfoInformation"><span class="selflink">SystemCallCountInfoInformation</span></td><td>6</td><td></td></tr><tr><td></td><td target="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemCallCounts"><span class="selflink">SystemCallCounts</span></td><td>6</td><td></td></tr><tr><td></td><td target="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemDeviceInformation"><span class="selflink">SystemDeviceInformation</span></td><td>7</td><td></td></tr><tr><td></td><td target="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemConfigurationInformation"><span class="selflink">SystemConfigurationInformation</span></td><td>7</td><td></td></tr><tr><td></td><td target="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemProcessorPerformanceInformation"><span class="selflink">SystemProcessorPerformanceInformation</span></td><td>8</td><td></td></tr><tr><td></td><td target="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemProcessorTimes"><span class="selflink">SystemProcessorTimes</span></td><td>8</td><td></td></tr><tr><td></td><td target="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemFlagsInformation"><span class="selflink">SystemFlagsInformation</span></td><td>9</td><td></td></tr><tr><td></td><td target="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemGlobalFlag"><span class="selflink">SystemGlobalFlag</span></td><td>9</td><td></td></tr><tr><td></td><td target="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemCallTimeInformation"><span class="selflink">SystemCallTimeInformation</span></td><td>10</td><td></td></tr><tr><td></td><td target="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemNotImplemented2"><span class="selflink">SystemNotImplemented2</span></td><td>10</td><td></td></tr><tr><td></td><td target="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemModuleInformation"><span class="selflink">SystemModuleInformation</span></td><td>11</td><td></td></tr><tr><td></td><td target="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemLocksInformation"><span class="selflink">SystemLocksInformation</span></td><td>12</td><td></td></tr><tr><td></td><td target="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemLockInformation"><span class="selflink">SystemLockInformation</span></td><td>12</td><td></td></tr><tr><td></td><td target="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemStackTraceInformation"><span class="selflink">SystemStackTraceInformation</span></td><td>13</td><td></td></tr><tr><td></td><td target="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemNotImplemented3"><span class="selflink">SystemNotImplemented3</span></td><td>13</td><td></td></tr><tr><td></td><td target="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemPagedPoolInformation"><span class="selflink">SystemPagedPoolInformation</span></td><td>14</td><td></td></tr><tr><td></td><td target="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemNotImplemented4"><span class="selflink">SystemNotImplemented4</span></td><td>14</td><td></td></tr><tr><td></td><td target="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemNonPagedPoolInformation"><span class="selflink">SystemNonPagedPoolInformation</span></td><td>15</td><td></td></tr><tr><td></td><td target="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemNotImplemented5"><span class="selflink">SystemNotImplemented5</span></td><td>15</td><td></td></tr><tr><td></td><td target="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemHandleInformation"><span class="selflink">SystemHandleInformation</span></td><td>16</td><td></td></tr><tr><td></td><td target="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemObjectInformation"><span class="selflink">SystemObjectInformation</span></td><td>17</td><td></td></tr><tr><td></td><td target="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemPageFileInformation"><span class="selflink">SystemPageFileInformation</span></td><td>18</td><td></td></tr><tr><td></td><td target="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemPagefileInformation"><span class="selflink">SystemPagefileInformation</span></td><td>18</td><td></td></tr><tr><td></td><td target="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemVdmInstemulInformation"><span class="selflink">SystemVdmInstemulInformation</span></td><td>19</td><td></td></tr><tr><td></td><td target="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemInstructionEmulationCounts"><span class="selflink">SystemInstructionEmulationCounts</span></td><td>19</td><td></td></tr><tr><td></td><td target="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemVdmBopInformation"><span class="selflink">SystemVdmBopInformation</span></td><td>20</td><td></td></tr><tr><td></td><td target="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemInvalidInfoClass1"><span class="selflink">SystemInvalidInfoClass1</span></td><td>20</td><td></td></tr><tr><td></td><td target="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemFileCacheInformation"><span class="selflink">SystemFileCacheInformation</span></td><td>21</td><td></td></tr><tr><td></td><td target="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemCacheInformation"><span class="selflink">SystemCacheInformation</span></td><td>21</td><td></td></tr><tr><td></td><td target="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemPoolTagInformation"><span class="selflink">SystemPoolTagInformation</span></td><td>22</td><td></td></tr><tr><td></td><td target="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemInterruptInformation"><span class="selflink">SystemInterruptInformation</span></td><td>23</td><td></td></tr><tr><td></td><td target="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemProcessorStatistics"><span class="selflink">SystemProcessorStatistics</span></td><td>23</td><td></td></tr><tr><td></td><td target="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemDpcBehaviourInformation"><span class="selflink">SystemDpcBehaviourInformation</span></td><td>24</td><td></td></tr><tr><td></td><td target="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemDpcInformation"><span class="selflink">SystemDpcInformation</span></td><td>24</td><td></td></tr><tr><td></td><td target="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemFullMemoryInformation"><span class="selflink">SystemFullMemoryInformation</span></td><td>25</td><td></td></tr><tr><td></td><td target="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemNotImplemented6"><span class="selflink">SystemNotImplemented6</span></td><td>25</td><td></td></tr><tr><td></td><td target="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemLoadImage"><span class="selflink">SystemLoadImage</span></td><td>26</td><td></td></tr><tr><td></td><td target="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemUnloadImage"><span class="selflink">SystemUnloadImage</span></td><td>27</td><td></td></tr><tr><td></td><td target="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemTimeAdjustmentInformation"><span class="selflink">SystemTimeAdjustmentInformation</span></td><td>28</td><td></td></tr><tr><td></td><td target="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemTimeAdjustment"><span class="selflink">SystemTimeAdjustment</span></td><td>28</td><td></td></tr><tr><td></td><td target="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemSummaryMemoryInformation"><span class="selflink">SystemSummaryMemoryInformation</span></td><td>29</td><td></td></tr><tr><td></td><td target="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemNotImplemented7"><span class="selflink">SystemNotImplemented7</span></td><td>29</td><td></td></tr><tr><td></td><td target="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemNextEventIdInformation"><span class="selflink">SystemNextEventIdInformation</span></td><td>30</td><td></td></tr><tr><td></td><td target="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemNotImplemented8"><span class="selflink">SystemNotImplemented8</span></td><td>30</td><td></td></tr><tr><td></td><td target="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemEventIdsInformation"><span class="selflink">SystemEventIdsInformation</span></td><td>31</td><td></td></tr><tr><td></td><td target="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemNotImplemented9"><span class="selflink">SystemNotImplemented9</span></td><td>31</td><td></td></tr><tr><td></td><td target="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemCrashDumpInformation"><span class="selflink">SystemCrashDumpInformation</span></td><td>32</td><td></td></tr><tr><td></td><td target="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemExceptionInformation"><span class="selflink">SystemExceptionInformation</span></td><td>33</td><td></td></tr><tr><td></td><td target="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemCrashDumpStateInformation"><span class="selflink">SystemCrashDumpStateInformation</span></td><td>34</td><td></td></tr><tr><td></td><td target="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemKernelDebuggerInformation"><span class="selflink">SystemKernelDebuggerInformation</span></td><td>35</td><td></td></tr><tr><td></td><td target="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemContextSwitchInformation"><span class="selflink">SystemContextSwitchInformation</span></td><td>36</td><td></td></tr><tr><td></td><td target="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemRegistryQuotaInformation"><span class="selflink">SystemRegistryQuotaInformation</span></td><td>37</td><td></td></tr><tr><td></td><td target="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemLoadAndCallImage"><span class="selflink">SystemLoadAndCallImage</span></td><td>38</td><td></td></tr><tr><td></td><td target="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemPrioritySeparation"><span class="selflink">SystemPrioritySeparation</span></td><td>39</td><td></td></tr><tr><td></td><td target="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemPlugPlayBusInformation"><span class="selflink">SystemPlugPlayBusInformation</span></td><td>40</td><td></td></tr><tr><td></td><td target="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemNotImplemented10"><span class="selflink">SystemNotImplemented10</span></td><td>40</td><td></td></tr><tr><td></td><td target="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemDockInformation"><span class="selflink">SystemDockInformation</span></td><td>41</td><td></td></tr><tr><td></td><td target="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemNotImplemented11"><span class="selflink">SystemNotImplemented11</span></td><td>41</td><td></td></tr><tr><td></td><td target="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemInvalidInfoClass2"><span class="selflink">SystemInvalidInfoClass2</span></td><td>42</td><td></td></tr><tr><td></td><td target="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemProcessorSpeedInformation"><span class="selflink">SystemProcessorSpeedInformation</span></td><td>43</td><td></td></tr><tr><td></td><td target="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemInvalidInfoClass3"><span class="selflink">SystemInvalidInfoClass3</span></td><td>43</td><td></td></tr><tr><td></td><td target="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemCurrentTimeZoneInformation"><span class="selflink">SystemCurrentTimeZoneInformation</span></td><td>44</td><td></td></tr><tr><td></td><td target="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemTimeZoneInformation"><span class="selflink">SystemTimeZoneInformation</span></td><td>44</td><td></td></tr><tr><td></td><td target="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemLookasideInformation"><span class="selflink">SystemLookasideInformation</span></td><td>45</td><td></td></tr><tr><td></td><td target="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemSetTimeSlipEvent"><span class="selflink">SystemSetTimeSlipEvent</span></td><td>46</td><td></td></tr><tr><td></td><td target="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemCreateSession"><span class="selflink">SystemCreateSession</span></td><td>47</td><td></td></tr><tr><td></td><td target="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemDeleteSession"><span class="selflink">SystemDeleteSession</span></td><td>48</td><td></td></tr><tr><td></td><td target="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemInvalidInfoClass4"><span class="selflink">SystemInvalidInfoClass4</span></td><td>49</td><td></td></tr><tr><td></td><td target="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemRangeStartInformation"><span class="selflink">SystemRangeStartInformation</span></td><td>50</td><td></td></tr><tr><td></td><td target="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemVerifierInformation"><span class="selflink">SystemVerifierInformation</span></td><td>51</td><td></td></tr><tr><td></td><td target="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemAddVerifier"><span class="selflink">SystemAddVerifier</span></td><td>52</td><td></td></tr><tr><td></td><td target="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemSessionProcessesInformation"><span class="selflink">SystemSessionProcessesInformation</span></td><td>53</td><td></td></tr><tr><td></td><td target="F:System.Windows.API.SYSTEM_INFORMATION_CLASS.SystemInformationClassMax"><span class="selflink">SystemInformationClassMax</span></td><td>54</td><td></td></tr></table></div><a name="seeAlsoSection"><!----></a><div class="OH_CollapsibleAreaRegion"><div class="OH_regiontitle">See Also</div><div class="OH_CollapsibleArea_HrDiv"><hr class="OH_CollapsibleArea_Hr" /></div></div><div class="OH_clear"></div><div class="seeAlsoStyle"><a href="4ed77504-ccf6-f5fe-69d0-5810f0e5089f.htm" target="">System.Windows.API Namespace</a></div></div>
+        </div>
+      </div>
+    </div>
+    <div id="OH_footer" class="OH_footer">
+      <p>Windows.FormX Library for .NET-Framework Windows Forms licensed under CPOL. (c) Florian Rappl, 2012</p>
+      <div class="OH_feedbacklink">
+        <a href="mailto:mail@florian-rappl.de?subject=FormX+SYSTEM_INFORMATION_CLASS+Enumeration+100+EN-US&amp;body=Your%20feedback%20is%20used%20to%20improve%20the%20documentation%20and%20the%20product.%20Your%20e-mail%20address%20will%20not%20be%20used%20for%20any%20other%20purpose%20and%20is%20disposed%20of%20after%20the%20issue%20you%20report%20is%20resolved.%20While%20working%20to%20resolve%20the%20issue%20that%20you%20report%2c%20you%20may%20be%20contacted%20via%20e-mail%20to%20get%20further%20details%20or%20clarification%20on%20the%20feedback%20you%20sent.%20After%20the%20issue%20you%20report%20has%20been%20addressed%2c%20you%20may%20receive%20an%20e-mail%20to%20let%20you%20know%20that%20your%20feedback%20has%20been%20addressed.">Send Feedback</a> on this topic to Florian Rappl.</div>
+    </div>
+  </body>
+</html>

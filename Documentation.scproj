@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Web">
+    <PropertyGroup>
+        <Name>FormX</Name>
+        <TopicStyle>vs2010</TopicStyle>
+        <LanguageId>1033</LanguageId>
+    </PropertyGroup>
+    <ItemGroup>
+        <Dlls Include="D:\Documents\Visual Studio 2005\Projects\Windows.Forms.Extended\Windows.Forms.Extensions\bin\Debug\Windows.Forms.Extensions.dll" />
+        <Comments Include="D:\Documents\Visual Studio 2005\Projects\Windows.Forms.Extended\Windows.Forms.Extensions\bin\Debug\Windows.Forms.Extensions.XML" />
+    </ItemGroup>
+    <Import Project="$(DXROOT)\Examples\Generic\generic.targets" />
+</Project>
