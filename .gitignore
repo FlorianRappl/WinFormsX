@@ -47,6 +47,7 @@ local.properties
 **/[Dd]ebug/
 **/[Rr]elease/
 **/[Dd]ocumentation/
+**/[Nn]uget/
 *_i.c
 *_p.c
 *.ilk

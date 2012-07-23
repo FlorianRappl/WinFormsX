@@ -19,7 +19,8 @@ Current status
 -------------------------------------------------------
 
 The current version number is **0.1.0**. This is the first version and is an
-incomplete alpha build.
+incomplete alpha build. A NuGet package is available. The package can be found
+over the Package Manager or the [NuGet Website](https://www.nuget.org/packages/WinFormsX).
 
 Version history
 -------------------------------------------------------
@@ -52,8 +53,8 @@ your contribution is more than welcome!
 Currently implemented methods
 -------------------------------------------------------
 
-Here will be some text about already implemented methods and links to obtain further information. Some information can be found on
-the [official webpage](http://winformx.florian-rappl.de/index.html).
+Here will be some text about already implemented methods and links to obtain further information.
+Some information can be found on the [official webpage](http://winformx.florian-rappl.de/index.html).
 
 Some legal stuff
 ------------------
