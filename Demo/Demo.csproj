@@ -106,12 +106,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Source\Source.csproj">
-      <Project>{328BBF85-D7CB-4385-A4CF-C95FF7FF0FC6}</Project>
-      <Name>Source</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\Circus.jpg" />
   </ItemGroup>
   <ItemGroup>
@@ -143,6 +137,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\seamonkey.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Source\Source.csproj">
+      <Project>{328BBF85-D7CB-4385-A4CF-C95FF7FF0FC6}</Project>
+      <Name>Source</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
