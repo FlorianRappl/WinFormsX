@@ -8,7 +8,7 @@
     <ProjectGuid>{328BBF85-D7CB-4385-A4CF-C95FF7FF0FC6}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>System.Windows.FormsX</RootNamespace>
+    <RootNamespace>System.Windows.FormX</RootNamespace>
     <AssemblyName>WinFormsX</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -47,6 +47,9 @@
     <Compile Include="API\Delegates.cs" />
     <Compile Include="API\Enumerations\ALG.cs" />
     <Compile Include="API\Enumerations\DT.cs" />
+    <Compile Include="API\Enumerations\DWMNCRENDERINGPOLICY.cs" />
+    <Compile Include="API\Enumerations\DWMWINDOWATTRIBUTE.cs" />
+    <Compile Include="API\Enumerations\DWM_SOURCE_FRAME_SAMPLING.cs" />
     <Compile Include="API\Enumerations\ERROR.cs" />
     <Compile Include="API\Enumerations\ETOKEN_PRIVILEGES.cs" />
     <Compile Include="API\Enumerations\FILE.cs" />
@@ -60,6 +63,7 @@
     <Compile Include="API\Enumerations\REG.cs" />
     <Compile Include="API\Enumerations\VK.cs" />
     <Compile Include="API\Enumerations\WH.cs" />
+    <Compile Include="API\Enumerations\WTATYPE.cs" />
     <Compile Include="API\Keyboard.cs" />
     <Compile Include="API\Registry.cs" />
     <Compile Include="API\Enumerations\ROOT_KEY.cs" />
@@ -69,6 +73,10 @@
     <Compile Include="API\Structures\BITMAPINFO.cs" />
     <Compile Include="API\Structures\BITMAPINFOHEADER.cs" />
     <Compile Include="API\Structures\DTTOPTS.cs" />
+    <Compile Include="API\Structures\DWM_BLURBEHIND.cs" />
+    <Compile Include="API\Structures\DWM_PRESENT_PARAMETERS.cs" />
+    <Compile Include="API\Structures\DWM_THUMBNAIL_PROPERTIES.cs" />
+    <Compile Include="API\Structures\DWM_TIMING_INFO.cs" />
     <Compile Include="API\Structures\FILETIME.cs" />
     <Compile Include="API\Structures\KEYBOARDLLHOOK.cs" />
     <Compile Include="API\Structures\LUID.cs" />
@@ -84,24 +92,59 @@
     <Compile Include="API\Structures\RECT.cs" />
     <Compile Include="API\Structures\RGBQUAD.cs" />
     <Compile Include="API\Structures\SECURITY_ATTRIBUTES.cs" />
+    <Compile Include="API\Structures\SIZE.cs" />
     <Compile Include="API\Structures\TOKEN_PRIVILEGES.cs" />
+    <Compile Include="API\Structures\UNSIGNED_RATIO.cs" />
     <Compile Include="API\Structures\WIN32_FIND_DATAA.cs" />
     <Compile Include="API\Structures\WIN32_FIND_DATAW.cs" />
     <Compile Include="API\Enumerations\WM.cs" />
     <Compile Include="API\Structures\OSVERSIONINFO.cs" />
+    <Compile Include="API\Structures\WTA_OPTIONS.cs" />
     <Compile Include="API\Window.cs" />
     <Compile Include="API\Enumerations\VER_PLATFORM.cs" />
     <Compile Include="DrawingX\GraphicPathExtensions.cs" />
     <Compile Include="DrawingX\GraphicsExtensions.cs" />
     <Compile Include="DrawingX\ImageExtensions.cs" />
     <Compile Include="FormX\ControlExtensions.cs" />
+    <Compile Include="FormX\ControlX.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="FormX\Easing\Easing.cs" />
     <Compile Include="FormX\Easing\LinearEasing.cs" />
     <Compile Include="FormX\Easing\SinusEasing.cs" />
+    <Compile Include="FormX\ResizeDirection.cs" />
+    <Compile Include="FormX\Images.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Images.resx</DependentUpon>
+    </Compile>
+    <Compile Include="FormX\WindowX.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WebX\UrlExtensions.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="FormX\Images.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Images.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\min.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\shrink.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\close.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\max.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\resize.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

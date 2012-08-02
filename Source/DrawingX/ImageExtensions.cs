@@ -7,6 +7,7 @@ using System.Collections;
 using System.Drawing.Imaging;
 using System.Runtime.InteropServices;
 using System.Drawing.Drawing2D;
+using System.IO;
 
 namespace System.Windows.FormsX.DrawingX
 {
@@ -28,9 +29,8 @@ namespace System.Windows.FormsX.DrawingX
             var maxCount = 0;
             var dominantColor = Color.White;
 
-            var data = bitmap.LockBits(new Rectangle(Point.Empty, bitmap.Size), ImageLockMode.ReadOnly, bitmap.PixelFormat);
-
             //Taken from MSDN - http://msdn.microsoft.com/en-us/library/5ey6h79d.aspx
+            var data = bitmap.LockBits(new Rectangle(Point.Empty, bitmap.Size), ImageLockMode.ReadOnly, bitmap.PixelFormat);
             var ptr = data.Scan0;
 
             // Declare an array to hold the bytes of the bitmap.
@@ -143,6 +143,55 @@ namespace System.Windows.FormsX.DrawingX
                 g.DrawImage(originalImage, new Rectangle(Point.Empty, originalImage.Size),
                     0, 0, originalImage.Width, originalImage.Height, GraphicsUnit.Pixel, attributes);
             }
+            return newBitmap;
+        }
+
+        #endregion
+
+        #region Change Color
+
+        /// <summary>
+        /// Changes a specific color of the bitmap and returns a new bitmap with the modified color.
+        /// </summary>
+        /// <param name="bitmap">The original bitmap</param>
+        /// <param name="source">The color to change</param>
+        /// <param name="destination">The final color value</param>
+        /// <returns>The modified bitmap</returns>
+        public static Bitmap ChangeColor(this Bitmap bitmap, Color source, Color destination)
+        {
+            var newBitmap = new Bitmap(bitmap);
+            var data = newBitmap.LockBits(new Rectangle(Point.Empty, newBitmap.Size), ImageLockMode.ReadWrite, newBitmap.PixelFormat);
+            var ptr = data.Scan0;
+
+            // Declare an array to hold the bytes of the bitmap.
+            var bytes = Math.Abs(data.Stride) * newBitmap.Height;
+            var values = new byte[bytes];
+            var bpp = data.Stride / data.Width;
+
+            // Copy the RGB values into the array.
+            Marshal.Copy(ptr, values, 0, bytes);
+
+            for (var i = 0; i < bytes; i += bpp)
+            {
+                var color = Color.FromArgb(
+                    bpp == 4 ? values[i + 3] : 255, //Alpha
+                    values[i + 2], //Red
+                    values[i + 1], //Green
+                    values[i + 0]);//Blue
+
+                if (color == source)
+                {
+                    if (bpp == 4)
+                        values[i + 3] = destination.A;
+
+                    values[i + 2] = destination.R;
+                    values[i + 1] = destination.G;
+                    values[i + 0] = destination.B;
+                }
+            }
+
+            Marshal.Copy(values, 0, ptr, bytes);
+            newBitmap.UnlockBits(data);
             return newBitmap;
         }
 

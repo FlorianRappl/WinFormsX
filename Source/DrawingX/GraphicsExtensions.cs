@@ -176,35 +176,9 @@ namespace System.DrawingX
         {
             var gp = new GraphicsPath();
             gp.AddRectangle(origin);
-            g.DrawShadow(gp, color, dx, dy, blur);
-            //blur = Math.Abs(blur);
-            //var bhalf = blur / 2f;
-            //var extended = new RectangleF(origin.X + dx - bhalf, origin.Y + dy - bhalf, origin.Width + blur, origin.Height + blur);
-            //var intended = new RectangleF(origin.X + dx + bhalf, origin.Y + dy + bhalf, origin.Width - blur, origin.Height - blur);
-            //var region = new Region(extended);
-            //region.Exclude(origin);
-            //g.FillRegion(new SolidBrush(color), region);
 
-            //if (blur > 0f)
-            //{
-            //    region.Exclude(intended);
-            //    var gp = new GraphicsPath();
-            //    gp.AddRectangle(extended);
-            //    var lgb = new PathGradientBrush(gp);
-            //    lgb.CenterColor = color;
-            //    var colors = new Color[3];
-            //    var positions = new float[3];
-
-            //    for (var i = 0; i < 3; i++)
-            //    {
-            //        colors[i] = Color.FromArgb(255 * (2 - i) / 2, color);
-            //        positions[i] = (2f - i) / 2f;
-            //    }
-
-            //    lgb.InterpolationColors.Colors = colors;
-            //    lgb.InterpolationColors.Positions = positions;
-            //    g.FillRegion(lgb, region);
-            //}
+            if(gp.PointCount > 0)
+                g.DrawShadow(gp, color, dx, dy, blur);
         }
 
         /// <summary>
@@ -468,6 +442,36 @@ namespace System.DrawingX
             var left = (AnchorStyles.Left & corner) == AnchorStyles.Left;
             var top = (AnchorStyles.Top & corner) == AnchorStyles.Top;
             var s = Math.Ceiling(smoothness);
+
+            /* NEW CODE --- not working yet*/
+            /*
+            var b = new Bitmap((int)dest.Width, (int)dest.Height);
+            var r = new Rectangle(0, 0, (int)src.Width, (int)src.Height);
+            Graphics.FromImage(b).DrawImage(image, r, );
+            var data = b.LockBits(r, ImageLockMode.ReadWrite, b.PixelFormat);
+            var ptr = data.Scan0;
+            var bytes = Math.Abs(data.Stride) * b.Height;
+            var values = new byte[bytes];
+            System.Runtime.InteropServices.Marshal.Copy(ptr, values, 0, bytes);
+            var i = 3;
+
+            for (var x = 0; x < b.Width; x++)
+            {
+                for (var y = 0; y < b.Height; y++)
+                {
+                    var xr = Math.Min((x + 1) / s, 1.0);
+                    var yr = Math.Min((y + 1) / s, 1.0);
+                    var sq = (float)Math.Max(1.0 - Math.Sqrt(xr * xr + yr * yr), 0.0);
+                    values[i] = (byte)(255f * sq);
+                    i += 4;
+                }
+            }
+
+            System.Runtime.InteropServices.Marshal.Copy(values, 0, ptr, bytes);
+            b.UnlockBits(data);
+
+            g.DrawImage(b, dest, src, GraphicsUnit.Pixel);
+            */
 
             for (var x = 0; x < dest.Width; x++)
             {

@@ -74,6 +74,10 @@
             this.resetSmoothness = new System.Windows.Forms.Button();
             this.smoothness = new System.Windows.Forms.PictureBox();
             this.colorDialog = new System.Windows.Forms.ColorDialog();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numRadius4)).BeginInit();
@@ -112,6 +116,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.label13);
             this.tabPage1.Controls.Add(this.numRadius4);
             this.tabPage1.Controls.Add(this.numRadius3);
             this.tabPage1.Controls.Add(this.checkRadius4);
@@ -289,14 +294,15 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.roundRect.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.roundRect.Location = new System.Drawing.Point(8, 6);
+            this.roundRect.Location = new System.Drawing.Point(8, 52);
             this.roundRect.Name = "roundRect";
-            this.roundRect.Size = new System.Drawing.Size(705, 303);
+            this.roundRect.Size = new System.Drawing.Size(705, 257);
             this.roundRect.TabIndex = 0;
             this.roundRect.TabStop = false;
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.label14);
             this.tabPage2.Controls.Add(this.blur);
             this.tabPage2.Controls.Add(this.label6);
             this.tabPage2.Controls.Add(this.dy);
@@ -436,14 +442,15 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.shadow.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.shadow.Location = new System.Drawing.Point(8, 6);
+            this.shadow.Location = new System.Drawing.Point(8, 55);
             this.shadow.Name = "shadow";
-            this.shadow.Size = new System.Drawing.Size(705, 303);
+            this.shadow.Size = new System.Drawing.Size(705, 254);
             this.shadow.TabIndex = 4;
             this.shadow.TabStop = false;
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.label15);
             this.tabPage3.Controls.Add(this.eAlpha);
             this.tabPage3.Controls.Add(this.label10);
             this.tabPage3.Controls.Add(this.sAlpha);
@@ -593,14 +600,15 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.reflections.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.reflections.Location = new System.Drawing.Point(8, 6);
+            this.reflections.Location = new System.Drawing.Point(8, 52);
             this.reflections.Name = "reflections";
-            this.reflections.Size = new System.Drawing.Size(705, 303);
+            this.reflections.Size = new System.Drawing.Size(705, 257);
             this.reflections.TabIndex = 1;
             this.reflections.TabStop = false;
             // 
             // tabPage4
             // 
+            this.tabPage4.Controls.Add(this.label16);
             this.tabPage4.Controls.Add(this.anchors);
             this.tabPage4.Controls.Add(this.edge);
             this.tabPage4.Controls.Add(this.label12);
@@ -685,15 +693,56 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.smoothness.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.smoothness.Location = new System.Drawing.Point(8, 6);
+            this.smoothness.Location = new System.Drawing.Point(8, 52);
             this.smoothness.Name = "smoothness";
-            this.smoothness.Size = new System.Drawing.Size(705, 303);
+            this.smoothness.Size = new System.Drawing.Size(705, 257);
             this.smoothness.TabIndex = 2;
             this.smoothness.TabStop = false;
             // 
             // colorDialog
             // 
             this.colorDialog.AnyColor = true;
+            // 
+            // label13
+            // 
+            this.label13.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label13.Location = new System.Drawing.Point(8, 3);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(705, 46);
+            this.label13.TabIndex = 13;
+            this.label13.Text = "Just sketch a rectangle with the mouse on the drawing pane.";
+            // 
+            // label14
+            // 
+            this.label14.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label14.Location = new System.Drawing.Point(8, 3);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(705, 49);
+            this.label14.TabIndex = 14;
+            this.label14.Text = "Just sketch a rectangle with the mouse on the drawing pane.";
+            // 
+            // label15
+            // 
+            this.label15.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label15.Location = new System.Drawing.Point(8, 3);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(705, 46);
+            this.label15.TabIndex = 14;
+            this.label15.Text = "Just sketch a rectangle with the mouse on the drawing pane.";
+            // 
+            // label16
+            // 
+            this.label16.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label16.Location = new System.Drawing.Point(8, 3);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(705, 46);
+            this.label16.TabIndex = 14;
+            this.label16.Text = "Use the reset button to update the view. Left is the modified one (smooth enabled" +
+    "), with the original being on the right side.";
             // 
             // GraphicsForm
             // 
@@ -780,5 +829,9 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.CheckedListBox anchors;
         private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label16;
     }
 }

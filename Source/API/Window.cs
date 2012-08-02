@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Runtime.InteropServices;
+using System.Drawing;
 
 namespace System.Windows.API
 {
@@ -11,6 +12,12 @@ namespace System.Windows.API
     /// </summary>
     public class Window
     {
+        [DllImport("user32.dll")]
+        public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
+
+        [DllImport("user32.dll")]
+        public static extern bool ReleaseCapture();
+
         [DllImport("User32.dll")]
         public static extern bool ShowWindowAsync(IntPtr hWnd, int cmdShow);
 
@@ -91,6 +98,56 @@ namespace System.Windows.API
 
         [DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = false)]
         public static extern IntPtr SendMessage(IntPtr hWnd, Int32 Msg, IntPtr wParam, IntPtr lParam);
+
+        [DllImport("dwmapi.dll")]
+        public static extern int DwmEnableComposition(int fEnable);
+
+        [DllImport("dwmapi.dll")]
+        public static extern int DwmEnableMMCSS(int fEnableMMCSS);
+
+        [DllImport("dwmapi.dll")]
+        public static extern int DwmGetColorizationColor(ref int pcrColorization, ref int pfOpaqueBlend);
+
+        [DllImport("dwmapi.dll")]
+        public static extern int DwmGetCompositionTimingInfo(IntPtr hwnd, ref DWM_TIMING_INFO pTimingInfo);
+
+        [DllImport("dwmapi.dll")]
+        public static extern int DwmGetWindowAttribute(IntPtr hwnd, int dwAttribute, IntPtr pvAttribute, int cbAttribute);
+
+        [DllImport("dwmapi.dll")]
+        public static extern int DwmModifyPreviousDxFrameDuration(IntPtr hwnd, int cRefreshes, int fRelative);
+
+        [DllImport("dwmapi.dll")]
+        public static extern int DwmQueryThumbnailSourceSize(IntPtr hThumbnail, ref Size pSize);
+
+        [DllImport("dwmapi.dll")]
+        public static extern int DwmRegisterThumbnail(IntPtr hwndDestination, IntPtr hwndSource, ref Size pMinimizedSize, ref IntPtr phThumbnailId);
+
+        [DllImport("dwmapi.dll")]
+        public static extern int DwmSetDxFrameDuration(IntPtr hwnd, int cRefreshes);
+
+        [DllImport("dwmapi.dll")]
+        public static extern int DwmSetPresentParameters(IntPtr hwnd, ref DWM_PRESENT_PARAMETERS pPresentParams);
+
+        [DllImport("dwmapi.dll")]
+        public static extern int DwmSetWindowAttribute(IntPtr hwnd, int dwAttribute, IntPtr pvAttribute, int cbAttribute);
+
+        [DllImport("dwmapi.dll")]
+        public static extern int DwmUnregisterThumbnail(IntPtr hThumbnailId);
+
+        [DllImport("dwmapi.dll")]
+        public static extern int DwmUpdateThumbnailProperties(IntPtr hThumbnailId, ref DWM_THUMBNAIL_PROPERTIES ptnProperties);
+
+        /// <summary>
+        /// Set The window's theme attributes
+        /// </summary>
+        /// <param name="hWnd">The handle to the window</param>
+        /// <param name="wtype">What type of attributes</param>
+        /// <param name="attributes">The attributes to add / remove</param>
+        /// <param name="size">The size of the attributes struct</param>
+        /// <returns>If the call was successful or not</returns>
+        [DllImport("UxTheme.dll")]
+        public static extern int SetWindowThemeAttribute(IntPtr hWnd, WTATYPE wtype, ref WTA_OPTIONS attributes, uint size);
 
         /// <summary>
         /// Checks if Windows is higher or equal than a minimum version.

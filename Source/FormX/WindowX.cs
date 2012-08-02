@@ -1,0 +1,556 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Windows.Forms;
+using System.Windows.API;
+using System.Runtime.InteropServices;
+using System.Windows.FormsX.DrawingX;
+
+namespace System.Windows.FormsX
+{
+    /// <summary>
+    /// Class for a Metroish form (like the Zune client, the GitHub Windows client, ...) without WPF
+    /// </summary>
+    public partial class WindowX : Form
+    {
+        #region Constants
+
+        #region Desktop Window Manager
+
+        const int DWM_BB_BLURREGION = 2;
+        const int DWM_BB_ENABLE = 1;
+        const int DWM_BB_TRANSITIONONMAXIMIZED = 4;
+        const int DWM_COMPOSED_EVENT_NAME_MAX_LENGTH = 0x40;
+        const int DWM_FRAME_DURATION_DEFAULT = -1;
+        const int DWM_TNP_OPACITY = 4;
+        const int DWM_TNP_RECTDESTINATION = 1;
+        const int DWM_TNP_RECTSOURCE = 2;
+        const int DWM_TNP_SOURCECLIENTAREAONLY = 0x10;
+        const int DWM_TNP_VISIBLE = 8;
+        const string DWM_COMPOSED_EVENT_BASE_NAME = "DwmComposedEvent_";
+        const string DWM_COMPOSED_EVENT_NAME_FORMAT = "%s%d";
+
+        #endregion
+
+        #region WM
+
+        const int WM_DWMCOMPOSITIONCHANGED = 0x31e;
+        const int WM_NCLBUTTONDOWN = 0xa1;
+
+        #endregion
+
+        #region Hittest
+
+        const int HTCLIENT = 1;
+        const int HTCAPTION = 2;
+        const int HTGROWBOX = 4;
+        const int HTSIZE = 4;
+        const int HTMINBUTTON = 8;
+        const int HTMAXBUTTON = 9;
+        const int HTLEFT = 10;
+        const int HTRIGHT = 11;
+        const int HTTOP = 12;
+        const int HTTOPLEFT = 13;
+        const int HTTOPRIGHT = 14;
+        const int HTBOTTOM = 15;
+        const int HTBOTTOMLEFT = 16;
+        const int HTBOTTOMRIGHT = 17;
+        const int HTBORDER = 18;
+
+        #endregion
+
+        const int BORDERWIDTH = 10;
+
+        #endregion
+
+        #region Readonly
+
+        static readonly bool DwmApiAvailable = (Environment.OSVersion.Version.Major >= 6);
+        static readonly Color startColor = Color.FromArgb(102, 0, 0, 0);
+
+        #endregion
+
+        #region Members
+        
+        bool _marginOk;
+        bool _aeroEnabled;
+        MARGINS _dwmMargins;
+        ResizeDirection _resizeDir;
+        Color _buttonColor;
+        Color _hoverColor;
+        Button _min;
+        Button _max;
+        Button _close;
+
+        #endregion
+
+        #region Constructor / Destructor
+
+        /// <summary>
+        /// Constructs a WindowX form instance
+        /// </summary>
+        public WindowX()
+        {
+            _buttonColor = startColor;
+            _hoverColor = Color.SteelBlue;
+            _aeroEnabled = false;
+            _resizeDir = ResizeDirection.None;
+            SuspendLayout();
+            MouseMove += new MouseEventHandler(OnMouseMove);
+            MouseDown += new MouseEventHandler(OnMouseDown);
+            Activated += new EventHandler(OnActivated);
+            SetStyle(ControlStyles.ResizeRedraw, true);
+            AutoScaleDimensions = new SizeF(6f, 13f);
+            Font = new Font("Segoe UI", 8f, FontStyle.Regular, GraphicsUnit.Point);
+            AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.White;
+            StartPosition = FormStartPosition.CenterScreen;
+            Size = new Size(640, 480);
+            SetupButtons();
+            ResumeLayout(false);
+            DoubleBuffered = true;
+        }
+
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            base.Dispose(disposing);
+        }
+
+        #endregion
+
+        #region Properties
+
+        /// <summary>
+        /// Gets or sets the usual color of the buttons.
+        /// </summary>
+        public Color ButtonColor
+        {
+            get { return _buttonColor; }
+            set
+            {
+                _buttonColor = value;
+                SetButtonNormalImages();
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the color of the buttons while hovering.
+        /// </summary>
+        public Color HoverColor
+        {
+            get { return _hoverColor; }
+            set
+            {
+                _hoverColor = value;
+                SetButtonHoverImages();
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the visibility of the minimize box in the upper right corner.
+        /// </summary>
+        public new bool MinimizeBox
+        {
+            get { return base.MinimizeBox; }
+            set
+            {
+                base.MinimizeBox = value;
+                _min.Visible = value;
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the visibility of the maximize box in the upper right corner.
+        /// </summary>
+        public new bool MaximizeBox
+        {
+            get { return base.MaximizeBox; }
+            set
+            {
+                base.MaximizeBox = value;
+                _max.Visible = value;
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the visibility of the close box in the upper right corner.
+        /// </summary>
+        public bool CloseBox
+        {
+            get { return _close.Visible; }
+            set
+            {
+                _close.Visible = value;
+            }
+        }
+
+        /// <summary>
+        /// Gets the status of the aero display manager.
+        /// </summary>
+        public bool AeroEnabled
+        {
+            get { return _aeroEnabled; }
+        }
+
+        private ResizeDirection ResizeDirection
+        {
+            get { return _resizeDir; }
+            set
+            {
+                _resizeDir = value;
+
+                //Change cursor
+                switch (value)
+                {
+                    case ResizeDirection.Left:
+                        this.Cursor = Cursors.SizeWE;
+
+                        break;
+                    case ResizeDirection.Right:
+                        this.Cursor = Cursors.SizeWE;
+
+                        break;
+                    case ResizeDirection.Top:
+                        this.Cursor = Cursors.SizeNS;
+
+                        break;
+                    case ResizeDirection.Bottom:
+                        this.Cursor = Cursors.SizeNS;
+
+                        break;
+                    case ResizeDirection.BottomLeft:
+                        this.Cursor = Cursors.SizeNESW;
+
+                        break;
+                    case ResizeDirection.TopRight:
+                        this.Cursor = Cursors.SizeNESW;
+
+                        break;
+                    case ResizeDirection.BottomRight:
+                        this.Cursor = Cursors.SizeNWSE;
+
+                        break;
+                    case ResizeDirection.TopLeft:
+                        this.Cursor = Cursors.SizeNWSE;
+
+                        break;
+                    default:
+                        this.Cursor = Cursors.Default;
+                        break;
+                }
+            }
+        }
+
+        #endregion
+
+        #region Event Handlers
+
+        void OnActivated(object sender, EventArgs e)
+        {
+            Window.DwmExtendFrameIntoClientArea(Handle, ref _dwmMargins);
+        }
+
+        void OnMouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                if (Width - BORDERWIDTH > e.Location.X && e.Location.X > BORDERWIDTH && e.Location.Y > BORDERWIDTH)
+                {
+                    MoveControl(Handle);
+                }
+                else if (this.WindowState != FormWindowState.Maximized)
+                {
+                    System.Diagnostics.Debug.WriteLine(e.Location.ToString());
+                    ResizeForm(_resizeDir);
+                }
+            }
+        }
+
+        void OnMouseMove(object sender, MouseEventArgs e)
+        {        
+            //Calculate which direction to resize based on mouse position
+
+            if (e.Location.X < BORDERWIDTH & e.Location.Y < BORDERWIDTH)
+                ResizeDirection = ResizeDirection.TopLeft;
+            else if (e.Location.X < BORDERWIDTH & e.Location.Y > Height - BORDERWIDTH)
+                ResizeDirection = ResizeDirection.BottomLeft;
+            else if (e.Location.X > Width - BORDERWIDTH & e.Location.Y > Height - BORDERWIDTH)
+                ResizeDirection = ResizeDirection.BottomRight;
+            else if (e.Location.X > Width - BORDERWIDTH & e.Location.Y < BORDERWIDTH)
+                ResizeDirection = ResizeDirection.TopRight;
+            else if (e.Location.X < BORDERWIDTH)
+                ResizeDirection = ResizeDirection.Left;
+            else if (e.Location.X > Width - BORDERWIDTH)
+                ResizeDirection = ResizeDirection.Right;
+            else if (e.Location.Y < BORDERWIDTH)
+                ResizeDirection = ResizeDirection.Top;
+            else if (e.Location.Y > Height - BORDERWIDTH)
+                ResizeDirection = ResizeDirection.Bottom;
+            else
+                ResizeDirection = ResizeDirection.None;
+        }
+
+        #endregion
+
+        #region Message Loop
+
+        protected override void WndProc(ref Message m)
+        {
+            int WM_NCCALCSIZE = 0x83;
+            int WM_NCHITTEST = 0x84;
+            IntPtr result = default(IntPtr);
+
+            int dwmHandled = Window.DwmDefWindowProc(m.HWnd, m.Msg, m.WParam, m.LParam, out result);
+            
+            if (dwmHandled == 1)
+            {
+                m.Result = result;
+                return;
+            }
+
+            if (m.Msg == WM_NCCALCSIZE && m.WParam.ToInt32() == 1)
+            {
+                NCCALCSIZE_PARAMS nccsp = (NCCALCSIZE_PARAMS)Marshal.PtrToStructure(m.LParam, typeof(NCCALCSIZE_PARAMS));
+
+                // Adjust (shrink) the client rectangle to accommodate the border:
+                nccsp.rect0.Top += 0;
+                nccsp.rect0.Bottom += 0;
+                nccsp.rect0.Left += 0;
+                nccsp.rect0.Right += 0;
+
+                if (!_marginOk)
+                {
+                    //Set what client area would be for passing to DwmExtendIntoClientArea.
+                    //Also remember that at least one of these values NEEDS TO BE > 1, else
+                    //it won't work.
+                    _dwmMargins.cyTopHeight = 0;
+                    _dwmMargins.cxLeftWidth = 0;
+                    _dwmMargins.cyBottomHeight = 3;
+                    _dwmMargins.cxRightWidth = 0;
+                    _marginOk = true;
+                }
+
+                Marshal.StructureToPtr(nccsp, m.LParam, false);
+                m.Result = IntPtr.Zero;
+            }
+            else if (m.Msg == WM_NCHITTEST && m.Result.ToInt32() == 0)
+            {
+                m.Result = HitTestNCA(m.HWnd, m.WParam, m.LParam);
+            }
+            else
+            {
+                base.WndProc(ref m);
+            }
+        }
+
+        static int LoWord(int dwValue)
+        {
+            return dwValue & 0xffff;
+        }
+
+        static int HiWord(int dwValue)
+        {
+            return (dwValue >> 16) & 0xffff;
+        }
+
+        IntPtr HitTestNCA(IntPtr hwnd, IntPtr wparam, IntPtr lparam)
+        {
+            var p = new Point(LoWord(lparam.ToInt32()), HiWord(lparam.ToInt32()));
+            var topleft = RectangleToScreen(new Rectangle(0, 0, _dwmMargins.cxLeftWidth, _dwmMargins.cxLeftWidth));
+
+            if (topleft.Contains(p))
+                return new IntPtr(HTTOPLEFT);
+
+            var topright = RectangleToScreen(new Rectangle(Width - _dwmMargins.cxRightWidth, 0, _dwmMargins.cxRightWidth, _dwmMargins.cxRightWidth));
+
+            if (topright.Contains(p))
+                return new IntPtr(HTTOPRIGHT);
+
+            var botleft = RectangleToScreen(new Rectangle(0, Height - _dwmMargins.cyBottomHeight, _dwmMargins.cxLeftWidth, _dwmMargins.cyBottomHeight));
+
+            if (botleft.Contains(p))
+                return new IntPtr(HTBOTTOMLEFT);
+
+            var botright = RectangleToScreen(new Rectangle(Width - _dwmMargins.cxRightWidth, Height - _dwmMargins.cyBottomHeight, _dwmMargins.cxRightWidth, _dwmMargins.cyBottomHeight));
+
+            if (botright.Contains(p))
+                return new IntPtr(HTBOTTOMRIGHT);
+
+            var top = RectangleToScreen(new Rectangle(0, 0, Width, _dwmMargins.cxLeftWidth));
+
+            if (top.Contains(p))
+                return new IntPtr(HTTOP);
+
+            var cap = RectangleToScreen(new Rectangle(0, _dwmMargins.cxLeftWidth, Width, _dwmMargins.cyTopHeight - _dwmMargins.cxLeftWidth));
+
+            if (cap.Contains(p))
+                return new IntPtr(HTCAPTION);
+
+            var left = RectangleToScreen(new Rectangle(0, 0, _dwmMargins.cxLeftWidth, Height));
+
+            if (left.Contains(p))
+                return new IntPtr(HTLEFT);
+
+            var right = RectangleToScreen(new Rectangle(Width - _dwmMargins.cxRightWidth, 0, _dwmMargins.cxRightWidth, Height));
+
+            if (right.Contains(p))
+                return new IntPtr(HTRIGHT);
+
+            var bottom = RectangleToScreen(new Rectangle(0, Height - _dwmMargins.cyBottomHeight, Width, _dwmMargins.cyBottomHeight));
+
+            if (bottom.Contains(p))
+                return new IntPtr(HTBOTTOM);
+
+            return new IntPtr(HTCLIENT);
+        }
+
+        #endregion
+
+        #region Methods
+
+        void MoveControl(IntPtr hWnd)
+        {
+            Window.ReleaseCapture();
+            Window.SendMessage(hWnd, WM_NCLBUTTONDOWN, HTCAPTION, 0);
+        }
+
+        void ResizeForm(ResizeDirection direction)
+        {
+            int dir = -1;
+
+            switch (direction)
+            {
+                case ResizeDirection.Left:
+                    dir = HTLEFT;
+                    break;
+                case ResizeDirection.TopLeft:
+                    dir = HTTOPLEFT;
+                    break;
+                case ResizeDirection.Top:
+                    dir = HTTOP;
+                    break;
+                case ResizeDirection.TopRight:
+                    dir = HTTOPRIGHT;
+                    break;
+                case ResizeDirection.Right:
+                    dir = HTRIGHT;
+                    break;
+                case ResizeDirection.BottomRight:
+                    dir = HTBOTTOMRIGHT;
+                    break;
+                case ResizeDirection.Bottom:
+                    dir = HTBOTTOM;
+                    break;
+                case ResizeDirection.BottomLeft:
+                    dir = HTBOTTOMLEFT;
+                    break;
+            }
+
+            if (dir != -1)
+            {
+                Window.ReleaseCapture();
+                Window.SendMessage(this.Handle, WM_NCLBUTTONDOWN, dir, 0);
+            }
+        }
+
+        void SetupButtons()
+        {
+            _min = new Button();
+            _max = new Button();
+            _close = new Button();
+            _close.FlatAppearance.BorderSize = _max.FlatAppearance.BorderSize = _min.FlatAppearance.BorderSize = 0;
+            _close.FlatStyle = _max.FlatStyle = _min.FlatStyle = FlatStyle.Flat;
+            _close.FlatAppearance.MouseOverBackColor = _max.FlatAppearance.MouseOverBackColor = _min.FlatAppearance.MouseOverBackColor = Color.Transparent;
+            _close.FlatAppearance.MouseDownBackColor = _max.FlatAppearance.MouseDownBackColor = _min.FlatAppearance.MouseDownBackColor = Color.Transparent;
+            _max.Width = _close.Width = _min.Width = 10;
+            _max.Height = _close.Height = _min.Height = 10;
+            _min.Location = new Point(562, 14);
+            _max.Location = new Point(581, 14);
+            _close.Location = new Point(600, 14);
+            _min.BackgroundImageLayout = ImageLayout.Center;
+            _max.BackgroundImageLayout = ImageLayout.Center;
+            _close.BackgroundImageLayout = ImageLayout.Center;
+            _max.Anchor = _close.Anchor = _min.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            _min.Click += new EventHandler(OnMinimizeClick);
+            _max.Click += new EventHandler(OnMaximizeClick);
+            _close.Click += new EventHandler(OnCloseClick);
+            _min.MouseEnter += new EventHandler(OnMouseHover);
+            _min.MouseLeave += new EventHandler(OnMouseHover);
+            _max.MouseEnter += new EventHandler(OnMouseHover);
+            _max.MouseLeave += new EventHandler(OnMouseHover);
+            _close.MouseEnter += new EventHandler(OnMouseHover);
+            _close.MouseLeave += new EventHandler(OnMouseHover);
+            SetButtonNormalImages();
+            SetButtonHoverImages();
+            Controls.Add(_min);
+            Controls.Add(_max);
+            Controls.Add(_close);
+        }
+
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            base.OnPaint(e);
+
+            if(WindowState != FormWindowState.Maximized && SizeGripStyle != SizeGripStyle.Hide)
+                e.Graphics.DrawImage(Images.resize, new Point(Width - 10, Height - 10));
+        }
+
+        void OnMouseHover(object sender, EventArgs e)
+        {
+            var bt = sender as Button;
+            var t = bt.BackgroundImage;
+            bt.BackgroundImage = bt.Tag as Bitmap;
+            bt.Tag = t;
+        }
+
+        void SetButtonHoverImages()
+        {
+            _min.Tag = Images.min.ChangeColor(startColor, _hoverColor);
+            _max.Tag = Images.max.ChangeColor(startColor, _hoverColor);
+            _close.Tag = Images.close.ChangeColor(startColor, _hoverColor);
+        }
+
+        void SetButtonNormalImages()
+        {
+            _min.BackgroundImage = Images.min.ChangeColor(startColor, _buttonColor);
+            _max.BackgroundImage = Images.max.ChangeColor(startColor, _buttonColor);
+            _close.BackgroundImage = Images.close.ChangeColor(startColor, _buttonColor);
+        }
+
+        void OnCloseClick(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        void OnMaximizeClick(object sender, EventArgs e)
+        {
+            if (WindowState == FormWindowState.Normal)
+            {
+                _max.BackgroundImage = Images.shrink.ChangeColor(startColor, _hoverColor);
+                _max.Tag = Images.shrink.ChangeColor(startColor, _buttonColor);
+                WindowState = FormWindowState.Maximized;
+            }
+            else
+            {
+                _max.BackgroundImage = Images.max.ChangeColor(startColor, _hoverColor);
+                _max.Tag = Images.max.ChangeColor(startColor, _buttonColor);
+                WindowState = FormWindowState.Normal;
+            }
+        }
+
+        void OnMinimizeClick(object sender, EventArgs e)
+        {
+            WindowState = FormWindowState.Minimized;
+        }
+
+        #endregion
+    }
+}
