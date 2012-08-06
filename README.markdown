@@ -18,12 +18,18 @@ existing codes), you are more than welcome.
 Current status
 -------------------------------------------------------
 
-The current version number is **0.1.0**. This is the first version and is an
+The current version number is **0.1.5**. This is the second version and still an
 incomplete alpha build. A NuGet package is available. The package can be found
 over the Package Manager or the [NuGet Website](https://www.nuget.org/packages/WinFormsX).
 
 Version history
 -------------------------------------------------------
+
+**0.1.5:**
+
+- Added some more Win32 API function calls (mostly DWM)
+- Added a derived `Form` class for building Metro-like applications
+- Extension method for `Bitmap` object (`ChangeColor()`)
 
 **0.1.0:**
 
@@ -59,11 +65,14 @@ Some information can be found on the [official webpage](http://winformx.florian-
 Some legal stuff
 ------------------
 
-Copyright (c) 2012, Florian Rappl
+Copyright (c) 2012, Florian Rappl.
+
+This project is licensed under the Code Project Open License
+([CPOL](http://www.codeproject.com/info/cpol10.aspx)) 1.02.
 
 Permission to use, copy, modify, and/or distribute this software for any
-purpose with or without fee is hereby granted, provided that the above
-copyright notice and this permission notice appear in all copies.
+purpose with or without fee is hereby granted, provided that the license
+is respected in every way.
 
 THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
 WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
