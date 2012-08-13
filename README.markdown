@@ -18,12 +18,19 @@ existing codes), you are more than welcome.
 Current status
 -------------------------------------------------------
 
-The current version number is **0.1.5**. This is the second version and still an
+The current version number is **0.1.6**. This is the third version and still an
 incomplete alpha build. A NuGet package is available. The package can be found
 over the Package Manager or the [NuGet Website](https://www.nuget.org/packages/WinFormsX).
 
 Version history
 -------------------------------------------------------
+**0.1.6:**
+
+- Added new datatypes `PointD` and `SizeD` (shouldn't be needed to often, but can be helpful)
+- Fixed some namespace inconsistencies (now all GDI+ stuff is located in `System.DrawingX`)
+- Fixed a minor designer bug for the `WindowX` form and improved the designer possibilities
+- Improved the `Animate()` method to support an arbitrary number of nested values (instead of only one nested level)
+- Extended the demo version for the CodeProject article
 
 **0.1.5:**
 

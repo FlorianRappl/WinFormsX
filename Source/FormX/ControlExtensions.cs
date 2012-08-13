@@ -6,6 +6,7 @@ using System.Windows.Forms;
 using System.Collections;
 using System.Drawing;
 using System.DrawingX;
+using System.Reflection;
 
 namespace System.Windows.FormsX
 {
@@ -66,71 +67,22 @@ namespace System.Windows.FormsX
             var reflection = properties.GetType();
             var target = c.GetType();
             var props = reflection.GetProperties();
-            var values = new object[props.Length, 2];
+            var values = new ReflectionCache[props.Length];
 
             for (int i = 0; i < props.Length; i++)
             {
-                var prop = props[i];
-
-                values[i, 1] = prop.GetValue(properties, null);
-                var exist = target.GetProperty(prop.Name);
-
-                if (exist == null)
-                    throw new ArgumentException("Invalid property to animate. The given properties have to match a property of the control.");
-
-                values[i, 0] = exist.GetValue(c, null);
+                values[i] = new ReflectionCache(target.GetProperty(props[i].Name));
+                values[i].SetStart(values[i].Info.GetValue(c, null));
+                values[i].SetEnd(props[i].GetValue(properties, null));
             }
 
             t.Tick += (s, e) =>
             {
                 frame++;
 
-                for (int i = 0; i < props.Length; i++)
+                for (int i = 0; i < values.Length; i++)
                 {
-                    var subprops = props[i].PropertyType.GetProperties().Where(m => m.CanRead && m.CanWrite).ToArray();
-
-                    if (subprops.Length == 0)
-                    {
-                        var start = Convert.ToDouble(values[i, 0]);
-                        var end = Convert.ToDouble(values[i, 1]);
-                        var value = easing.CalculateStep(frame, maxframes, start, end);
-
-                        if (values[i, 0] is int)
-                            target.GetProperty(props[i].Name).SetValue(c, (int)value, null);
-                        else if (values[i, 0] is int)
-                            target.GetProperty(props[i].Name).SetValue(c, (long)value, null);
-                        else if (values[i, 0] is float)
-                            target.GetProperty(props[i].Name).SetValue(c, (float)value, null);
-                        else if (values[i, 0] is decimal)
-                            target.GetProperty(props[i].Name).SetValue(c, (decimal)value, null);
-                        else
-                            target.GetProperty(props[i].Name).SetValue(c, value, null);
-                    }
-                    else
-                    {
-                        var cp = Activator.CreateInstance(values[i, 0].GetType());
-
-                        foreach (var subprop in subprops)
-                        {
-                            object basevalue = subprop.GetValue(values[i, 0], null);
-                            var start = Convert.ToDouble(basevalue);
-                            var end = Convert.ToDouble(subprop.GetValue(values[i, 1], null));
-                            var value = easing.CalculateStep(frame, maxframes, start, end);
-
-                            if (basevalue is int)
-                                subprop.SetValue(cp, (int)value, null);
-                            else if (basevalue is int)
-                                subprop.SetValue(cp, (long)value, null);
-                            else if (basevalue is float)
-                                subprop.SetValue(cp, (float)value, null);
-                            else if (basevalue is decimal)
-                                subprop.SetValue(cp, (decimal)value, null);
-                            else
-                                subprop.SetValue(cp, value, null);
-                        }
-
-                        target.GetProperty(props[i].Name).SetValue(c, cp, null);
-                    }
+                    values[i].Execute(c, easing, frame, maxframes);
                 }
 
                 if (frame == maxframes)
@@ -143,6 +95,133 @@ namespace System.Windows.FormsX
             };
 
             t.Start();
+        }
+
+        class ReflectionCache
+        {
+            public ReflectionCache(PropertyInfo info)
+            {
+                Info = info;
+
+                if(info == null)
+                    throw new ArgumentException("Invalid property to animate. The given properties have to match a property of the control.");
+
+                var subprops = info.PropertyType.GetProperties().Where(m => m.CanRead && m.CanWrite).ToArray();
+
+                if (subprops.Length > 0)
+                {
+                    SubList = new ReflectionCache[subprops.Length];
+
+                    for (int i = 0; i < subprops.Length; i++)
+                        SubList[i] = new ReflectionCache(subprops[i]);
+                }
+            }
+
+            public double Start { get; private set; }
+
+            public double End { get; private set; }
+
+            public bool HasItems { get { return SubList != null; } }
+
+            public Type ListType { get; private set; }
+
+            public ReflectionCache[] SubList { get; private set; }
+
+            public PropertyInfo Info { get; private set; }
+
+            public Action<object, object> SetValue { get; private set; }
+
+            public void Execute(object c, Easing easing, int frame, int frames)
+            {
+                if (HasItems)
+                {
+                    var cp = Activator.CreateInstance(ListType);
+
+                    foreach (var item in SubList)
+                    {
+                        item.Execute(cp, easing, frame, frames);
+                    }
+
+                    Info.SetValue(c, cp, null);
+                }
+                else
+                {
+                    var value = easing.CalculateStep(frame, frames, Start, End);
+                    this.SetValue(c, value);
+                }
+            }
+
+            public ReflectionCache SetStart(object value)
+            {
+                if (HasItems)
+                {
+                    ListType = value.GetType();
+
+                    foreach (var item in SubList)
+                    {
+                        item.SetStart(item.Info.GetValue(value, null));
+                    }
+                }
+                else
+                {
+                    Start = Convert.ToDouble(value);
+
+                    if (value is int)
+                    {
+                        SetValue = (c, v) =>
+                        {
+                            Info.SetValue(c, Convert.ToInt32(v), null);
+                        };
+                    }
+                    else if (value is long)
+                    {
+                        SetValue = (c, v) =>
+                        {
+                            Info.SetValue(c, Convert.ToInt64(v), null);
+                        };
+                    }
+                    else if (value is float)
+                    {
+                        SetValue = (c, v) =>
+                        {
+                            Info.SetValue(c, Convert.ToSingle(v), null);
+                        };
+                    }
+                    else if (value is decimal)
+                    {
+                        SetValue = (c, v) =>
+                        {
+                            Info.SetValue(c, Convert.ToDecimal(v), null);
+                        };
+                    }
+                    else
+                    {
+                        SetValue = (c, v) =>
+                        {
+                            Info.SetValue(c, v, null);
+                        };
+                    }
+                }
+
+                return this;
+            }
+
+            public ReflectionCache SetEnd(object value)
+            {
+                if (HasItems)
+                {
+                    foreach (var item in SubList)
+                    {
+                        item.SetEnd(item.Info.GetValue(value, null));
+                    }
+                }
+                else
+                {
+                    End = Convert.ToDouble(value);
+                }
+
+                return this;
+            }
         }
 
         #endregion

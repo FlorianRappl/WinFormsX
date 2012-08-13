@@ -105,6 +105,8 @@
     <Compile Include="DrawingX\GraphicPathExtensions.cs" />
     <Compile Include="DrawingX\GraphicsExtensions.cs" />
     <Compile Include="DrawingX\ImageExtensions.cs" />
+    <Compile Include="DrawingX\PointD.cs" />
+    <Compile Include="DrawingX\SizeD.cs" />
     <Compile Include="FormX\ControlExtensions.cs" />
     <Compile Include="FormX\ControlX.cs">
       <SubType>Component</SubType>

@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.DrawingX;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Windows.API;
 using System.Runtime.InteropServices;
-using System.Windows.FormsX.DrawingX;
 
 namespace System.Windows.FormsX
 {
@@ -85,6 +85,7 @@ namespace System.Windows.FormsX
         Button _min;
         Button _max;
         Button _close;
+        int diff;
 
         #endregion
 
@@ -131,6 +132,8 @@ namespace System.Windows.FormsX
         /// <summary>
         /// Gets or sets the usual color of the buttons.
         /// </summary>
+        [Description("Gets or sets the standard color of the three system buttons.")]
+        [Category("FormsX")]
         public Color ButtonColor
         {
             get { return _buttonColor; }
@@ -144,6 +147,8 @@ namespace System.Windows.FormsX
         /// <summary>
         /// Gets or sets the color of the buttons while hovering.
         /// </summary>
+        [Description("Gets or sets the hover color of the three system buttons.")]
+        [Category("FormsX")]
         public Color HoverColor
         {
             get { return _hoverColor; }
@@ -157,6 +162,8 @@ namespace System.Windows.FormsX
         /// <summary>
         /// Gets or sets the visibility of the minimize box in the upper right corner.
         /// </summary>
+        [Description("Gets or sets the visibility of the minimize box.")]
+        [Category("FormsX")]
         public new bool MinimizeBox
         {
             get { return base.MinimizeBox; }
@@ -170,6 +177,8 @@ namespace System.Windows.FormsX
         /// <summary>
         /// Gets or sets the visibility of the maximize box in the upper right corner.
         /// </summary>
+        [Description("Gets or sets the visibility of the maximize box.")]
+        [Category("FormsX")]
         public new bool MaximizeBox
         {
             get { return base.MaximizeBox; }
@@ -183,6 +192,8 @@ namespace System.Windows.FormsX
         /// <summary>
         /// Gets or sets the visibility of the close box in the upper right corner.
         /// </summary>
+        [Description("Gets or sets the visibility of the close box.")]
+        [Category("FormsX")]
         public bool CloseBox
         {
             get { return _close.Visible; }
@@ -195,12 +206,13 @@ namespace System.Windows.FormsX
         /// <summary>
         /// Gets the status of the aero display manager.
         /// </summary>
+        [Browsable(false)]
         public bool AeroEnabled
         {
             get { return _aeroEnabled; }
         }
 
-        private ResizeDirection ResizeDirection
+        ResizeDirection ResizeDirection
         {
             get { return _resizeDir; }
             set
@@ -268,7 +280,6 @@ namespace System.Windows.FormsX
                 }
                 else if (this.WindowState != FormWindowState.Maximized)
                 {
-                    System.Diagnostics.Debug.WriteLine(e.Location.ToString());
                     ResizeForm(_resizeDir);
                 }
             }
@@ -416,6 +427,22 @@ namespace System.Windows.FormsX
 
         #region Methods
 
+        /// <summary>
+        /// Uses the original PerformLayout() method (this is a workaround for the designer).
+        /// </summary>
+        public new void PerformLayout()
+        {
+            if (Width - _close.Right != diff)
+            {
+                var k = Width - _close.Right - diff;
+                _close.Location = new Point(_close.Location.X + k, _close.Location.Y);
+                _max.Location = new Point(_max.Location.X + k, _max.Location.Y);
+                _min.Location = new Point(_min.Location.X + k, _min.Location.Y);
+            }
+
+            base.PerformLayout();
+        }
+
         void MoveControl(IntPtr hWnd)
         {
             Window.ReleaseCapture();
@@ -493,6 +520,7 @@ namespace System.Windows.FormsX
             Controls.Add(_min);
             Controls.Add(_max);
             Controls.Add(_close);
+            diff = Width - _close.Right;
         }
 
         protected override void OnPaint(PaintEventArgs e)

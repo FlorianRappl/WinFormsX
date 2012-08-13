@@ -6,7 +6,7 @@ using System.IO;
 using System.Net;
 using System.Net.Security;
 
-namespace System.Windows.FormsX.WebX
+namespace System.WebX
 {
     /// <summary>
     /// Class containing extension methods for Uri objects.

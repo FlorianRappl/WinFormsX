@@ -9,7 +9,7 @@ using System.Runtime.InteropServices;
 using System.Drawing.Drawing2D;
 using System.IO;
 
-namespace System.Windows.FormsX.DrawingX
+namespace System.DrawingX
 {
     /// <summary>
     /// Class with extensions for Bitmap and Image objects
