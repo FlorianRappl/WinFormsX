@@ -114,11 +114,15 @@
     <Compile Include="FormX\Easing\Easing.cs" />
     <Compile Include="FormX\Easing\LinearEasing.cs" />
     <Compile Include="FormX\Easing\SinusEasing.cs" />
+    <Compile Include="FormX\FormExtensions.cs" />
     <Compile Include="FormX\ResizeDirection.cs" />
     <Compile Include="FormX\Images.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Images.resx</DependentUpon>
+    </Compile>
+    <Compile Include="FormX\TransparentPanel.cs">
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="FormX\WindowX.cs">
       <SubType>Form</SubType>

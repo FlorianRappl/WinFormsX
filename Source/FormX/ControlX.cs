@@ -6,26 +6,38 @@ using System.Windows.Forms;
 
 namespace System.Windows.FormsX
 {
-    public class ControlX<T> : Control where T : Control
+    // CHANGE INTERNAL TO public ONCE PUBLISHABLE
+    internal class ControlX<T> : Control where T : Control
     {
         //http://www.codeproject.com/Articles/26878/Making-Transparent-Controls-No-Flickering
 
         public ControlX()
         {
-            //TODO Coordinaten etc. einnehmen vom Control in dessen bisherigen Element
+            //TODO Inherit coordinates etc. of former / usual element
 
-            //TODO das Element wird hier contained und zwar mit DockStyle = Fill
+            //TODO Contain the element with DockStyle.Fill
         }
 
         /*
-         * Idee für WinFormX:
-         * ControlX<Control> Klasse erweiterten Modus (z.B. Prozent Ausrichtung und Prozent Größe)
-         * außerdem echte Transparenz bieten
+         * Idea for WinFormsX:
+         * ControlX<Control> class with extended mode (e.g. fluid design with relative units like percent)
+         * provide real transparency
          */
 
         public void SetEventsPropagate(object events)
         {
-            //TODO echt ne crazy idee...
+            //TODO This method could allow events to propagate
         }
     }
+
+    //TODO:
+    //Include PRISM style classes to creating composite regions
+    //http://www.codeproject.com/Articles/48287/Getting-Started-with-Prism-2-1-for-WPF
+    //http://compositewpf.codeplex.com/
+
+    //TODO:
+    //Include some MVVM style classes - so that binding gets a lot easier
+
+    //TODO:
+    //Binding to value of control (like width) -- if value changes then an animation should occur! [ CSS3 Transition style ]
 }

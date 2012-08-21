@@ -85,7 +85,6 @@ namespace System.Windows.FormsX
         Button _min;
         Button _max;
         Button _close;
-        int diff;
 
         #endregion
 
@@ -100,7 +99,7 @@ namespace System.Windows.FormsX
             _hoverColor = Color.SteelBlue;
             _aeroEnabled = false;
             _resizeDir = ResizeDirection.None;
-            SuspendLayout();
+            ClientSize = new Size(640, 480);
             MouseMove += new MouseEventHandler(OnMouseMove);
             MouseDown += new MouseEventHandler(OnMouseDown);
             Activated += new EventHandler(OnActivated);
@@ -110,9 +109,7 @@ namespace System.Windows.FormsX
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             StartPosition = FormStartPosition.CenterScreen;
-            Size = new Size(640, 480);
             SetupButtons();
-            ResumeLayout(false);
             DoubleBuffered = true;
         }
 
@@ -428,19 +425,32 @@ namespace System.Windows.FormsX
         #region Methods
 
         /// <summary>
+        /// Prevents a bug that occurs while restoring the form after a minimize operation.
+        /// </summary>
+        /// <param name="x">The upper left corner x-coordinate.</param>
+        /// <param name="y">The upper left corner y-coordinate.</param>
+        /// <param name="width">The new width of the form (it is too large - use current Width value).</param>
+        /// <param name="height">The new height of the form (it is too large - use the current Height value).</param>
+        /// <param name="specified">What kind of boundaries should be changed?!</param>
+        protected override void SetBoundsCore(int x, int y, int width, int height, BoundsSpecified specified)
+        {
+            base.SetBoundsCore(x, y, Width, Height, specified);
+        }
+
+        /// <summary>
         /// Uses the original PerformLayout() method (this is a workaround for the designer).
         /// </summary>
         public new void PerformLayout()
         {
-            if (Width - _close.Right != diff)
+            base.PerformLayout();
+
+            if (ClientSize.Width - _close.Right != 14)
             {
-                var k = Width - _close.Right - diff;
+                var k = ClientSize.Width - _close.Right - 14;
                 _close.Location = new Point(_close.Location.X + k, _close.Location.Y);
                 _max.Location = new Point(_max.Location.X + k, _max.Location.Y);
                 _min.Location = new Point(_min.Location.X + k, _min.Location.Y);
             }
-
-            base.PerformLayout();
         }
 
         void MoveControl(IntPtr hWnd)
@@ -499,9 +509,9 @@ namespace System.Windows.FormsX
             _close.FlatAppearance.MouseDownBackColor = _max.FlatAppearance.MouseDownBackColor = _min.FlatAppearance.MouseDownBackColor = Color.Transparent;
             _max.Width = _close.Width = _min.Width = 10;
             _max.Height = _close.Height = _min.Height = 10;
-            _min.Location = new Point(562, 14);
-            _max.Location = new Point(581, 14);
-            _close.Location = new Point(600, 14);
+            _min.Location = new Point(578, 14);
+            _max.Location = new Point(597, 14);
+            _close.Location = new Point(616, 14);
             _min.BackgroundImageLayout = ImageLayout.Center;
             _max.BackgroundImageLayout = ImageLayout.Center;
             _close.BackgroundImageLayout = ImageLayout.Center;
@@ -520,7 +530,6 @@ namespace System.Windows.FormsX
             Controls.Add(_min);
             Controls.Add(_max);
             Controls.Add(_close);
-            diff = Width - _close.Right;
         }
 
         protected override void OnPaint(PaintEventArgs e)

@@ -14,6 +14,7 @@ namespace WFX.Showcase
     {
         public MainForm()
         {
+            SetStyle(ControlStyles.SupportsTransparentBackColor, true);
             InitializeComponent();
         }
 
@@ -30,6 +31,11 @@ namespace WFX.Showcase
         private void button3_Click(object sender, EventArgs e)
         {
             new MetroForm().Show();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            this.Notify("This is a test! Now this is a lot of fucking text or something like this ...", 2000, 0.5, Color.SteelBlue, Color.Black, Color.White);
         }
     }
 }

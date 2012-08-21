@@ -97,7 +97,7 @@ namespace System.DrawingX
         #region Shadow
 
         /// <summary>
-        /// Draws a shadow around a rectangle.
+        /// Draws a shadow around a defined path.
         /// </summary>
         /// <param name="g">The current Graphics handle.</param>
         /// <param name="path">The path which should have a shadow.</param>
@@ -107,34 +107,29 @@ namespace System.DrawingX
         /// <param name="blur">The blurness.</param>
         public static void DrawShadow(this Graphics g, GraphicsPath path, Color color, float dx, float dy, float blur)
         {
-            blur = Math.Abs(blur);
-            var bhalf = blur / 2f;
-            var extendedPoints = (path.Clone() as GraphicsPath).PathPoints;
-            var intendedPoints = (path.Clone() as GraphicsPath).PathPoints;
-            var rect = path.GetBounds();
-            var wideX = blur / rect.Width;
-            var wideY = blur / rect.Height;
+            var bounds = path.GetBounds();
+            var bpw = blur / (float)bounds.Width / 2f;
+            var bph = blur / (float)bounds.Height / 2f;
+            var tdx = -(float)bounds.Left - (float)bounds.Width / 2f;
+            var tdy = -(float)bounds.Top - (float)bounds.Height / 2f;
+            path.Transform(new Matrix(1f, 0f, 0f, 1f, tdx, tdy));
+            Region original = new Region(path);
+            path.Transform(new Matrix(1f + bpw, 0f, 0f, 1f + bph, dx, dy));
+            Region transform = new Region(path);
+            transform.Exclude(original);
 
-            for (int i = 0; i < path.PathPoints.Length; i++)
+            var gs = g.Save();
+            g.TranslateTransform(-tdx, -tdy);
+
+            if (blur <= 0f)
             {
-                extendedPoints[i].X += (extendedPoints[i].X - rect.Left) * wideX + dx - bhalf;
-                extendedPoints[i].Y += (extendedPoints[i].Y - rect.Top) * wideY + dy - bhalf;
-                intendedPoints[i].X += (rect.Left - intendedPoints[i].X) * wideX + dx + bhalf;
-                intendedPoints[i].Y += (rect.Top - intendedPoints[i].Y) * wideY + dy + bhalf;
+                g.FillRegion(new SolidBrush(color), transform);
             }
-
-            var extended = new GraphicsPath(extendedPoints, path.PathTypes);
-            var intended = new GraphicsPath(intendedPoints, path.PathTypes);
-
-            var region = new Region(extended);
-            region.Exclude(path);
-            g.FillRegion(new SolidBrush(color), region);
-
-            if (blur > 0f)
+            else
             {
-                region.Exclude(intended);
-                var lgb = new PathGradientBrush(extended);
+                var lgb = new PathGradientBrush(path);
                 lgb.CenterColor = color;
+                lgb.SurroundColors = new Color[] { Color.Transparent };
                 var colors = new Color[3];
                 var positions = new float[3];
 
@@ -146,8 +141,10 @@ namespace System.DrawingX
 
                 lgb.InterpolationColors.Colors = colors;
                 lgb.InterpolationColors.Positions = positions;
-                g.FillRegion(lgb, region);
+                g.FillRegion(lgb, transform);
             }
+
+            g.Restore(gs);
         }
 
         /// <summary>
@@ -192,6 +189,29 @@ namespace System.DrawingX
         public static void DrawShadow(this Graphics g, RectangleF origin, Color color, PointF shift,  float blur)
         {
             g.DrawShadow(origin, color, shift.X, shift.Y, blur);
+        }
+
+        #endregion
+
+        #region Glow
+
+        /// <summary>
+        /// Draws a glowing border around a given rectangle.
+        /// </summary>
+        /// <param name="g">The current Graphics object.</param>
+        /// <param name="content">The rectangle that should contain the content.</param>
+        /// <param name="glowColor">The color of the glow effect (will become 50 percent transparent).</param>
+        /// <param name="size">The size of the glow effect.</param>
+        /// <param name="radius">The optional radius for rounded corners.</param>
+        public static void Glow(this Graphics g, Rectangle content, Color glowColor, int size = 10, float radius = 0)
+        {
+            var rect = new Rectangle(content.Left - size, content.Top - size, content.Width +  2 * size, 2 * size + content.Height);
+            var gp = new GraphicsPath();
+            gp.AddRoundRectangle(rect, radius);
+            var pgb = new PathGradientBrush(gp);
+            pgb.CenterColor = glowColor;
+            pgb.SurroundColors = new Color[] { Color.FromArgb(0, 0, 0, 0) };
+            g.FillRectangle(pgb, rect);
         }
 
         #endregion

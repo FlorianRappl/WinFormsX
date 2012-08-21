@@ -18,12 +18,20 @@ existing codes), you are more than welcome.
 Current status
 -------------------------------------------------------
 
-The current version number is **0.1.6**. This is the third version and still an
-incomplete alpha build. A NuGet package is available. The package can be found
-over the Package Manager or the [NuGet Website](https://www.nuget.org/packages/WinFormsX).
+The current version number is **0.1.7**. This version is still an incomplete alpha build.
+A NuGet package is available. The package can be found over the Package Manager or the
+[NuGet Website](https://www.nuget.org/packages/WinFormsX).
 
 Version history
 -------------------------------------------------------
+**0.1.7:**
+
+- Added a new extension method `Glow()` to any `Graphics` object
+- Added a new `Control` called `TransparentPanel`
+- Added a new extension method `Notify()` to any `Form` object
+- Improved the `DrawShadow()` method
+- Fixed a bug when restoring the `WindowX` form
+
 **0.1.6:**
 
 - Added new datatypes `PointD` and `SizeD` (shouldn't be needed to often, but can be helpful)
