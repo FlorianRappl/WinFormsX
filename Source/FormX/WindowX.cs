@@ -82,9 +82,10 @@ namespace System.Windows.FormsX
         ResizeDirection _resizeDir;
         Color _buttonColor;
         Color _hoverColor;
-        Button _min;
-        Button _max;
-        Button _close;
+        Color _pushColor;
+        PushButton _min;
+        PushButton _max;
+        PushButton _close;
 
         #endregion
 
@@ -96,7 +97,8 @@ namespace System.Windows.FormsX
         public WindowX()
         {
             _buttonColor = startColor;
-            _hoverColor = Color.SteelBlue;
+            _hoverColor = Color.FromArgb(80, 80, 80);
+            _pushColor = Color.White;
             _aeroEnabled = false;
             _resizeDir = ResizeDirection.None;
             ClientSize = new Size(640, 480);
@@ -127,6 +129,36 @@ namespace System.Windows.FormsX
         #region Properties
 
         /// <summary>
+        /// Gets the used close button.
+        /// </summary>
+        [Description("Gets the used close button.")]
+        [Category("FormsX")]
+        public PushButton CloseButton
+        {
+            get { return _close; }
+        }
+
+        /// <summary>
+        /// Gets the used minimize button.
+        /// </summary>
+        [Description("Gets the used minimize button.")]
+        [Category("FormsX")]
+        public PushButton MinimizeButton
+        {
+            get { return _min; }
+        }
+
+        /// <summary>
+        /// Gets the used maximize / shrink button.
+        /// </summary>
+        [Description("Gets the used maximize / shrink button.")]
+        [Category("FormsX")]
+        public PushButton MaximizeButton
+        {
+            get { return _max; }
+        }
+
+        /// <summary>
         /// Gets or sets the usual color of the buttons.
         /// </summary>
         [Description("Gets or sets the standard color of the three system buttons.")]
@@ -153,6 +185,21 @@ namespace System.Windows.FormsX
             {
                 _hoverColor = value;
                 SetButtonHoverImages();
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the color of the buttons while hovering.
+        /// </summary>
+        [Description("Gets or sets the push color of the three system buttons.")]
+        [Category("FormsX")]
+        public Color PushColor
+        {
+            get { return _pushColor; }
+            set
+            {
+                _pushColor = value;
+                SetButtonPushImages();
             }
         }
 
@@ -494,39 +541,36 @@ namespace System.Windows.FormsX
             if (dir != -1)
             {
                 Window.ReleaseCapture();
-                Window.SendMessage(this.Handle, WM_NCLBUTTONDOWN, dir, 0);
+                Window.SendMessage(Handle, WM_NCLBUTTONDOWN, dir, 0);
             }
         }
 
         void SetupButtons()
         {
-            _min = new Button();
-            _max = new Button();
-            _close = new Button();
-            _close.FlatAppearance.BorderSize = _max.FlatAppearance.BorderSize = _min.FlatAppearance.BorderSize = 0;
-            _close.FlatStyle = _max.FlatStyle = _min.FlatStyle = FlatStyle.Flat;
-            _close.FlatAppearance.MouseOverBackColor = _max.FlatAppearance.MouseOverBackColor = _min.FlatAppearance.MouseOverBackColor = Color.Transparent;
-            _close.FlatAppearance.MouseDownBackColor = _max.FlatAppearance.MouseDownBackColor = _min.FlatAppearance.MouseDownBackColor = Color.Transparent;
-            _max.Width = _close.Width = _min.Width = 10;
-            _max.Height = _close.Height = _min.Height = 10;
-            _min.Location = new Point(578, 14);
-            _max.Location = new Point(597, 14);
-            _close.Location = new Point(616, 14);
-            _min.BackgroundImageLayout = ImageLayout.Center;
-            _max.BackgroundImageLayout = ImageLayout.Center;
-            _close.BackgroundImageLayout = ImageLayout.Center;
+            _min = new PushButton();
+            _max = new PushButton();
+            _close = new PushButton();
+            _max.Width = _close.Width = _min.Width = 32;
+            _max.Height = _close.Height = _min.Height = 32;
+            _min.Location = new Point(552, 0);
+            _max.Location = new Point(584, 0);
+            _close.Location = new Point(616, 0);
             _max.Anchor = _close.Anchor = _min.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             _min.Click += new EventHandler(OnMinimizeClick);
             _max.Click += new EventHandler(OnMaximizeClick);
             _close.Click += new EventHandler(OnCloseClick);
-            _min.MouseEnter += new EventHandler(OnMouseHover);
-            _min.MouseLeave += new EventHandler(OnMouseHover);
-            _max.MouseEnter += new EventHandler(OnMouseHover);
-            _max.MouseLeave += new EventHandler(OnMouseHover);
-            _close.MouseEnter += new EventHandler(OnMouseHover);
-            _close.MouseLeave += new EventHandler(OnMouseHover);
+            _min.HoverBackColor = Color.FromArgb(224, 224, 224);
+            _close.HoverBackColor = Color.FromArgb(224, 224, 224);
+            _max.HoverBackColor = Color.FromArgb(224, 224, 224);
+            _min.PushBackColor = Color.FromArgb(78, 166, 234);
+            _close.PushBackColor = Color.FromArgb(78, 166, 234);
+            _max.PushBackColor = Color.FromArgb(78, 166, 234);
             SetButtonNormalImages();
             SetButtonHoverImages();
+            SetButtonPushImages();
+            _close.ToolTipText = "Close";
+            _min.ToolTipText = "Minimize";
+            _max.ToolTipText = "Maximize";
             Controls.Add(_min);
             Controls.Add(_max);
             Controls.Add(_close);
@@ -540,26 +584,37 @@ namespace System.Windows.FormsX
                 e.Graphics.DrawImage(Images.resize, new Point(Width - 10, Height - 10));
         }
 
-        void OnMouseHover(object sender, EventArgs e)
+        void SetButtonPushImages()
         {
-            var bt = sender as Button;
-            var t = bt.BackgroundImage;
-            bt.BackgroundImage = bt.Tag as Bitmap;
-            bt.Tag = t;
+            _min.PushImage = Images.min.ChangeColor(startColor, _pushColor);
+            _close.PushImage = Images.close.ChangeColor(startColor, _pushColor);
+
+            if (WindowState == FormWindowState.Maximized)
+                _max.PushImage = Images.shrink.ChangeColor(startColor, _pushColor);
+            else
+                _max.PushImage = Images.max.ChangeColor(startColor, _pushColor);
         }
 
         void SetButtonHoverImages()
         {
-            _min.Tag = Images.min.ChangeColor(startColor, _hoverColor);
-            _max.Tag = Images.max.ChangeColor(startColor, _hoverColor);
-            _close.Tag = Images.close.ChangeColor(startColor, _hoverColor);
+            _min.HoverImage = Images.min.ChangeColor(startColor, _hoverColor);
+            _close.HoverImage = Images.close.ChangeColor(startColor, _hoverColor);
+
+            if(WindowState == FormWindowState.Maximized)
+                _max.HoverImage = Images.shrink.ChangeColor(startColor, _hoverColor);
+            else
+                _max.HoverImage = Images.max.ChangeColor(startColor, _hoverColor);
         }
 
         void SetButtonNormalImages()
         {
-            _min.BackgroundImage = Images.min.ChangeColor(startColor, _buttonColor);
-            _max.BackgroundImage = Images.max.ChangeColor(startColor, _buttonColor);
-            _close.BackgroundImage = Images.close.ChangeColor(startColor, _buttonColor);
+            _min.Image = Images.min.ChangeColor(startColor, _buttonColor);
+            _close.Image = Images.close.ChangeColor(startColor, _buttonColor);
+
+            if (WindowState == FormWindowState.Maximized)
+                _max.Image = Images.shrink.ChangeColor(startColor, _buttonColor);
+            else
+                _max.Image = Images.max.ChangeColor(startColor, _buttonColor);
         }
 
         void OnCloseClick(object sender, EventArgs e)
@@ -571,14 +626,14 @@ namespace System.Windows.FormsX
         {
             if (WindowState == FormWindowState.Normal)
             {
-                _max.BackgroundImage = Images.shrink.ChangeColor(startColor, _hoverColor);
-                _max.Tag = Images.shrink.ChangeColor(startColor, _buttonColor);
+                _max.HoverImage = Images.shrink.ChangeColor(startColor, _hoverColor);
+                _max.Image = Images.shrink.ChangeColor(startColor, _buttonColor);
                 WindowState = FormWindowState.Maximized;
             }
             else
             {
-                _max.BackgroundImage = Images.max.ChangeColor(startColor, _hoverColor);
-                _max.Tag = Images.max.ChangeColor(startColor, _buttonColor);
+                _max.HoverImage = Images.max.ChangeColor(startColor, _hoverColor);
+                _max.Image = Images.max.ChangeColor(startColor, _buttonColor);
                 WindowState = FormWindowState.Normal;
             }
         }

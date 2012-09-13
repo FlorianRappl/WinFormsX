@@ -18,18 +18,16 @@ namespace System.Windows.FormsX
         /// </summary>
         /// <param name="form">The form to display the notification.</param>
         /// <param name="message">The message (notification) that should be displayed.</param>
-        /// <param name="duration">The duration of the notification.</param>
+        /// <param name="duration">The duration of the notification (specify -1 for infinite).</param>
         /// <param name="opacity">The opacity of the background (0..1).</param>
         /// <param name="glowColor">The glow color of the message rectangle.</param>
         /// <param name="backColor">The background color of the message rectangle.</param>
         /// <param name="foreColor">The text color of the message.</param>
-        public static void Notify(this Form form, string message, int duration, double opacity, Color glowColor, Color backColor, Color foreColor)
+        public static Control Notify(this Form form, string message, int duration, double opacity, Color glowColor, Color backColor, Color foreColor)
         {
             var font = new Font(form.Font.FontFamily, form.Font.Size * 1.2f, form.Font.Unit);
             var proposedSize = new Size(form.Width * 6 / 10, 0);
             var size = TextRenderer.MeasureText(message, font, proposedSize, TextFormatFlags.WordBreak);
-            var timer = new Timer();
-            timer.Interval = duration;
             var panel = new TransparentPanel();
             panel.Size = form.ClientRectangle.Size;
             panel.Location = new Point(0, 0);
@@ -47,14 +45,22 @@ namespace System.Windows.FormsX
             };
             form.Controls.Add(panel);
             panel.BringToFront();
-            panel.Refresh();
-            timer.Tick += (sender, e) =>
+
+            if (duration > 0)
             {
-                form.Controls.Remove(panel);
-                panel = null;
-                timer.Stop();
-            };
-            timer.Start();
+                var timer = new Timer();
+                timer.Interval = duration;
+                timer.Tick += (sender, e) =>
+                {
+                    form.Controls.Remove(panel);
+                    panel = null;
+                    timer.Stop();
+                };
+                timer.Start();
+            }
+
+            form.Refresh();
+            return panel;
         }
 
         /// <summary>
@@ -62,9 +68,9 @@ namespace System.Windows.FormsX
         /// </summary>
         /// <param name="form">The form to display the notification.</param>
         /// <param name="message">The message (notification) that should be displayed.</param>
-        public static void Notify(this Form form, string message)
+        public static Control Notify(this Form form, string message)
         {
-            form.Notify(message, 5000);
+            return form.Notify(message, 5000);
         }
 
         /// <summary>
@@ -72,10 +78,10 @@ namespace System.Windows.FormsX
         /// </summary>
         /// <param name="form">The form to display the notification.</param>
         /// <param name="message">The message (notification) that should be displayed.</param>
-        /// <param name="duration">The duration of the notification.</param>
-        public static void Notify(this Form form, string message, int duration)
+        /// <param name="duration">The duration of the notification (specify -1 for infinite).</param>
+        public static Control Notify(this Form form, string message, int duration)
         {
-            form.Notify(message, duration, 0.3);
+            return form.Notify(message, duration, 0.3);
         }
 
         /// <summary>
@@ -83,11 +89,11 @@ namespace System.Windows.FormsX
         /// </summary>
         /// <param name="form">The form to display the notification.</param>
         /// <param name="message">The message (notification) that should be displayed.</param>
-        /// <param name="duration">The duration of the notification.</param>
+        /// <param name="duration">The duration of the notification (specify -1 for infinite).</param>
         /// <param name="opacity">The opacity of the background (0..1).</param>
-        public static void Notify(this Form form, string message, int duration, double opacity)
+        public static Control Notify(this Form form, string message, int duration, double opacity)
         {
-            form.Notify(message, duration, opacity, Color.Red);
+            return form.Notify(message, duration, opacity, Color.Red);
         }
 
         /// <summary>
@@ -95,11 +101,11 @@ namespace System.Windows.FormsX
         /// </summary>
         /// <param name="form">The form to display the notification.</param>
         /// <param name="message">The message (notification) that should be displayed.</param>
-        /// <param name="duration">The duration of the notification.</param>
+        /// <param name="duration">The duration of the notification (specify -1 for infinite).</param>
         /// <param name="glowColor">The glow color of the message rectangle.</param>
-        public static void Notify(this Form form, string message, int duration, Color glowColor)
+        public static Control Notify(this Form form, string message, int duration, Color glowColor)
         {
-            form.Notify(message, duration, 0.3, glowColor);
+            return form.Notify(message, duration, 0.3, glowColor);
         }
 
         /// <summary>
@@ -107,12 +113,12 @@ namespace System.Windows.FormsX
         /// </summary>
         /// <param name="form">The form to display the notification.</param>
         /// <param name="message">The message (notification) that should be displayed.</param>
-        /// <param name="duration">The duration of the notification.</param>
+        /// <param name="duration">The duration of the notification (specify -1 for infinite).</param>
         /// <param name="opacity">The opacity of the background (0..1).</param>
         /// <param name="glowColor">The glow color of the message rectangle.</param>
-        public static void Notify(this Form form, string message, int duration, double opacity, Color glowColor)
+        public static Control Notify(this Form form, string message, int duration, double opacity, Color glowColor)
         {
-            form.Notify(message, duration, opacity, glowColor, Color.Black, Color.White);
+            return form.Notify(message, duration, opacity, glowColor, Color.Black, Color.White);
         }
     }
 }

@@ -37,5 +37,10 @@ namespace WFX.Showcase
         {
             this.Notify("This is a test! Now this is a lot of fucking text or something like this ...", 2000, 0.5, Color.SteelBlue, Color.Black, Color.White);
         }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            new AjaxForm().Show();
+        }
     }
 }

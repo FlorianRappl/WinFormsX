@@ -18,12 +18,22 @@ existing codes), you are more than welcome.
 Current status
 -------------------------------------------------------
 
-The current version number is **0.1.7**. This version is still an incomplete alpha build.
+The current version number is **0.1.8**. This version is still an incomplete alpha build.
 A NuGet package is available. The package can be found over the Package Manager or the
 [NuGet Website](https://www.nuget.org/packages/WinFormsX).
 
 Version history
 -------------------------------------------------------
+**0.1.8:**
+
+- Added a new class called `AjaxRequest` to perform async or sync webrequests similar to jQuery
+- Added a new control called `PushButton`
+- The `WindowX` form now has three `PushButton` instead of normal `Button` instances
+- Improved the `Notify()` extension method to return the control and to include infinite lifetime
+- Improved the toast notification drawing
+- Fixed some small bugs regarding the `WindowX` form
+- Added a small, yet complete JSON parser - just to avoid including external libraries
+
 **0.1.7:**
 
 - Added a new extension method `Glow()` to any `Graphics` object

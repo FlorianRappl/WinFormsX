@@ -93,5 +93,57 @@ namespace System.WebX
 
             return json;
         }
+
+        /// <summary>
+        /// Performs an AJAX request with default options.
+        /// </summary>
+        /// <param name="url">The url where the request is sent to.</param>
+        /// <returns>The AjaxRequest object.</returns>
+        public static AjaxRequest Ajax(this Uri url)
+        {
+            return url.Ajax(AjaxRequestOptions.Default);
+        }
+
+        /// <summary>
+        /// Performs an AJAX reuqest with custom options.
+        /// </summary>
+        /// <param name="url">The url where the request is sent to.</param>
+        /// <param name="options">The custom options of the current request.</param>
+        /// <returns>The AjaxRequest object.</returns>
+        public static AjaxRequest Ajax(this Uri url, AjaxRequestOptions options)
+        {
+            options.Url = url.ToString();
+            return Ajax(options);
+        }
+
+        /// <summary>
+        /// Performs an AJAX reuqest with custom options.
+        /// </summary>
+        /// <param name="options">The custom options of the current request as an anonymous object.</param>
+        /// <returns>The AjaxRequest object.</returns>
+        public static AjaxRequest Ajax(object options)
+        {
+            var opt = new AjaxRequestOptions();
+            var oft = typeof(AjaxRequestOptions);
+            var rft = options.GetType().GetProperties();
+
+            foreach (var rf in rft)
+            {
+                if (oft.GetProperty(rf.Name) != null)
+                    oft.GetProperty(rf.Name).SetValue(opt, rf.GetValue(options, null), null);
+            }            
+
+            return Ajax(opt);
+        }
+
+        /// <summary>
+        /// Performs an AJAX reuqest with custom options.
+        /// </summary>
+        /// <param name="options">The custom options of the current request.</param>
+        /// <returns>The AjaxRequest object.</returns>
+        public static AjaxRequest Ajax(AjaxRequestOptions options)
+        {
+            return new AjaxRequest(options);
+        }
     }
 }

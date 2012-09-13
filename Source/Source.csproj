@@ -35,6 +35,7 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -115,11 +116,17 @@
     <Compile Include="FormX\Easing\LinearEasing.cs" />
     <Compile Include="FormX\Easing\SinusEasing.cs" />
     <Compile Include="FormX\FormExtensions.cs" />
+    <Compile Include="FormX\PushButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="FormX\ResizeDirection.cs" />
     <Compile Include="FormX\Images.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Images.resx</DependentUpon>
+    </Compile>
+    <Compile Include="FormX\SimpleToolTip.cs">
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="FormX\TransparentPanel.cs">
       <SubType>Component</SubType>
@@ -128,6 +135,16 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WebX\AjaxDataType.cs" />
+    <Compile Include="WebX\AjaxDelegates.cs" />
+    <Compile Include="WebX\AjaxEventArgs.cs" />
+    <Compile Include="WebX\AjaxRequest.cs" />
+    <Compile Include="WebX\AjaxRequestOptions.cs" />
+    <Compile Include="WebX\AjaxRequestType.cs" />
+    <Compile Include="WebX\AjaxResponseEventArgs.cs" />
+    <Compile Include="WebX\DataFilterEventArgs.cs" />
+    <Compile Include="WebX\DynamicJsonConverter.cs" />
+    <Compile Include="WebX\ReadyState.cs" />
     <Compile Include="WebX\UrlExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
